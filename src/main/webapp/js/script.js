@@ -1,4 +1,8 @@
-const container1 = document.getElementById('container1');
+document.addEventListener('DOMContentLoaded', function () {
+
+
+
+    const container1 = document.getElementById('container1');
 const container2 = document.getElementById('container2');
 const container3 = document.getElementById('container3');
 const detailCredit = document.getElementById('detait-mon-credit');
@@ -13,7 +17,9 @@ const spanBouton3 = document.getElementById('span-bouton3');
 
 
 const buttonForm1 = document.getElementById('button-form1');
+
 const buttonForm2 = document.getElementById('button-form2');
+console.log(buttonForm2);
 const buttonForm31 = document.getElementById('button-form31');
 const buttonForm32 = document.getElementById('button-form32');
 
@@ -35,9 +41,9 @@ block1.addEventListener('click', () => {
     //     alert("data removed");
     // }
 
-    container1.style.display = 'block';
-    container2.style.display = 'none';
-    container3.style.display = 'none';
+    // container1.style.display = 'block';
+    // container2.style.display = 'none';
+    // container3.style.display = 'none';
     detailCredit.style.display = 'none';
     infosPersonnelles.style.display = 'none';
     block1.style.marginTop = '-10px';
@@ -60,11 +66,11 @@ block1.addEventListener('click', () => {
 
 block2.addEventListener('click', () => {
 
-    container1.style.display = 'none';
-    container2.style.display = 'block';
-    container3.style.display = 'none';
-    detailCredit.style.display = 'flex';
-    infosPersonnelles.style.display = 'none';
+    //container1.style.display = 'none';
+    //container2.style.display = 'block';
+    //container3.style.display = 'none';
+    //detailCredit.style.display = 'flex';
+    //infosPersonnelles.style.display = 'none';
 
     block2.style.marginTop = '-10px';
     block1.style.marginTop = '0px';
@@ -82,11 +88,11 @@ block2.addEventListener('click', () => {
 
 block3.addEventListener('click', () => {
 
-    container1.style.display = 'none';
-    container2.style.display = 'none';
-    container3.style.display = 'block';
-    detailCredit.style.display = 'flex';
-    infosPersonnelles.style.display = 'flex';
+ //   container1.style.display = 'none';
+   // container2.style.display = 'none';
+    //container3.style.display = 'block';
+    //detailCredit.style.display = 'flex';
+    //infosPersonnelles.style.display = 'flex';
 
     block3.style.marginTop = '-10px';
     block2.style.marginTop = '0px';
@@ -104,7 +110,6 @@ block3.addEventListener('click', () => {
 
 
 })
-
 
 
 
@@ -135,11 +140,11 @@ buttonForm1.addEventListener('click', (e) => {
         'mensualite': mensualite
     };
 
-    container1.style.display = 'none';
-    container2.style.display = 'block';
-    container3.style.display = 'none';
-    detailCredit.style.display = 'flex';
-    infosPersonnelles.style.display = 'none';
+ //   container1.style.display = 'none';
+   // container2.style.display = 'block';
+    //container3.style.display = 'none';
+    //detailCredit.style.display = 'flex';
+    //infosPersonnelles.style.display = 'none';
 
     block2.style.marginTop = '-10px';
     block1.style.marginTop = '0px';
@@ -184,11 +189,11 @@ buttonForm2.addEventListener('click', (e) => {
         'tel': tel
     };
 
-    container1.style.display = 'none';
-    container2.style.display = 'none';
-    container3.style.display = 'block';
-    detailCredit.style.display = 'flex';
-    infosPersonnelles.style.display = 'flex';
+  //  container1.style.display = 'none';
+    // container2.style.display = 'none';
+    // container3.style.display = 'block';
+    // detailCredit.style.display = 'flex';
+    // infosPersonnelles.style.display = 'flex';
 
     block3.style.marginTop = '-10px';
     block2.style.marginTop = '0px';
@@ -218,7 +223,7 @@ buttonForm2.addEventListener('click', (e) => {
 
 
 buttonForm31.addEventListener('click', (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     // if(JSON.parse(localStorage.getItem('formData3'))){
     //     localStorage.removeItem('formData3');
     // }
@@ -371,3 +376,5 @@ function calculateMensualite(montant, duree) {
     const mensualite = (montant * tauxInteret / 12) / (1 - Math.pow(1 + tauxInteret / 12, -duree));
     return mensualite;
 }
+
+});

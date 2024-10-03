@@ -11,7 +11,7 @@ public class JpaUtil {
 
     public static EntityManagerFactory getEntityManagerFactory() {
         if (entityManagerFactory == null) {
-            entityManagerFactory = Persistence.createEntityManagerFactory("default");
+            entityManagerFactory = Persistence.createEntityManagerFactory("creditPU");
         }
         return entityManagerFactory;
     }

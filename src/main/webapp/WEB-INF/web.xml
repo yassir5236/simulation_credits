@@ -4,7 +4,48 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
 
+    <servlet>
+        <servlet-name>CreditDemandeServlet</servlet-name>
+        <servlet-class>org.example.credit.controller.DemandeCreditController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreditDemandeServlet</servlet-name>
+        <url-pattern>/credit/infos</url-pattern>
+    </servlet-mapping>
 
 
+    <servlet>
+        <servlet-name>storeFormm</servlet-name>
+        <servlet-class>org.example.credit.controller.Form2Servlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>storeFormm</servlet-name>
+        <url-pattern>/storeFormmm</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>abc</servlet-name>
+        <servlet-class>org.example.credit.controller.Form1Servlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>abc</servlet-name>
+        <url-pattern>/storeForm111</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>SubmitFormServlet1j</servlet-name>
+        <servlet-class>org.example.credit.controller.SubmitFormServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SubmitFormServlet1j</servlet-name>
+        <url-pattern>/submitFormmm</url-pattern>
+    </servlet-mapping>
 
 </web-app>

@@ -1,7 +1,6 @@
 package org.example.credit.repository.dao;
 
 
-
 import org.example.credit.model.CreditDemande;
 
 import org.example.credit.repository.DemandeCreditRepository;
@@ -9,6 +8,7 @@ import org.example.credit.utils.JpaUtil;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+
 import java.util.List;
 
 public class DemandeCreditDaoImpl implements DemandeCreditRepository {
@@ -32,6 +32,7 @@ public class DemandeCreditDaoImpl implements DemandeCreditRepository {
         try {
             transaction.begin();
             em.persist(demande);
+            System.out.println("im in dao");
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
@@ -45,6 +46,7 @@ public class DemandeCreditDaoImpl implements DemandeCreditRepository {
         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         try {
+            System.out.println(demande);
             transaction.begin();
             em.merge(demande);
             transaction.commit();

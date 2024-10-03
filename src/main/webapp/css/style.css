@@ -34,13 +34,13 @@ background-color: #F1F2F6;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  display: none;
+ /* display: none;*/
 }
 .contenaire-global .recap .infos-personnelles {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  display: none;
+ /* display: none;*/
 }
 .contenaire-global .block-and-container {
   width: 50%;
