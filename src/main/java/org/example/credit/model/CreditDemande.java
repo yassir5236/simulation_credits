@@ -4,6 +4,7 @@ package org.example.credit.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
@@ -11,52 +12,64 @@ import java.time.LocalDate;
 public class CreditDemande {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numero;
 
     @Column(nullable = false)
-    private LocalDate date;  // Date de la demande
+    @NotNull(message = "La date de la demande ne peut pas être nulle.")
+    private LocalDate date;
 
     @Column(nullable = false)
-    private String etat;  // État de la demande (e.g., 'en cours', 'approuvé', 'rejeté')
+    @NotEmpty(message = "L'état de la demande ne peut pas être vide.")
+    private String etat;
 
     @Column(nullable = false)
-    private Double montant;  // Montant du prêt demandé
+    @DecimalMin(value = "0.0", inclusive = false, message = "Le montant doit être positif.")
+    private Double montant;
 
     @Column(nullable = false)
-    private int duree;  // Durée du crédit en mois
+    @Min(value = 1, message = "La durée doit être d'au moins 1 mois.")
+    private int duree;
 
     @Column(length = 500)
-    private String remarques;  // Remarques éventuelles sur la demande
-
-    // Informations financières supplémentaires pour la simulation
-    @Column(nullable = false)
-    private Double tauxInteret;  // Taux d'intérêt appliqué
+    private String remarques;
 
     @Column(nullable = false)
-    private Double mensualite;  // Montant de la mensualité calculée
+    @DecimalMin(value = "0.0", inclusive = false, message = "Le taux d'intérêt doit être positif.")
+    private Double tauxInteret;
 
     @Column(nullable = false)
-    private Double coutTotal;  // Coût total du prêt avec intérêts
+    @DecimalMin(value = "0.0", inclusive = false, message = "Le montant de la mensualité doit être positif.")
+    private Double mensualite;
 
-    // Informations personnelles de l'emprunteur
     @Column(nullable = false)
+    @DecimalMin(value = "0.0", inclusive = false, message = "Le coût total doit être positif.")
+    private Double coutTotal;
+
+    @Column(nullable = false)
+    @NotEmpty(message = "Le nom ne peut pas être vide.")
     private String nom;
 
     @Column(nullable = false)
+    @NotEmpty(message = "Le prénom ne peut pas être vide.")
     private String prenom;
 
     @Column(nullable = false)
+    @Min(value = 18, message = "L'âge doit être d'au moins 18 ans.")
+    @Max(value = 120, message = "L'âge ne peut pas dépasser 120 ans.")
     private int age;
 
     @Column(nullable = false)
+    @NotEmpty(message = "La profession ne peut pas être vide.")
     private String profession;
 
     // Coordonnées de l'emprunteur
     @Column(nullable = false)
+    @Email(message = "L'email doit être valide.")
     private String email;
 
     @Column(nullable = false)
+    @Pattern(regexp = "^\\+?[0-9. ()-]{7,}$", message = "Le numéro de téléphone doit être valide.")
     private String telephone;
 
     // Constructeur par défaut
@@ -183,9 +196,7 @@ public class CreditDemande {
         this.telephone = telephone;
     }
 
-    // Méthode utilitaire pour calculer le coût total du prêt
     public void calculerCoutTotal() {
         this.coutTotal = this.mensualite * this.duree;
     }
 }
-
