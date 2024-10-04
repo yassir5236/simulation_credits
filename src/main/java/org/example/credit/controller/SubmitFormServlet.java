@@ -30,6 +30,9 @@ public class SubmitFormServlet extends HttpServlet {
         String profession = (String) session.getAttribute("profession");
         String montantStr = (String) session.getAttribute("montant");
         String dureeStr = (String) session.getAttribute("duree");
+        String mensualite =(String) session.getAttribute("mensualite");
+
+
         String email = (String) session.getAttribute("email");
         String telephone = (String) session.getAttribute("telephone");
 
@@ -55,6 +58,7 @@ public class SubmitFormServlet extends HttpServlet {
         double montant = Double.parseDouble(montantStr);
         int duree = Integer.parseInt(dureeStr);
         double revenus = Double.parseDouble(revenusStr);
+        double mensualiteFinal = Double.parseDouble(mensualite);
 
         // Vérifier que l'utilisateur a au moins 18 ans
         LocalDate dateNaissance = LocalDate.parse(dateNaissanceStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -64,8 +68,8 @@ public class SubmitFormServlet extends HttpServlet {
             return;
         }
 
-        double coutTotal =200;
-        double mensualite=12;
+//        double coutTotal =;
+//        double mensualite=;
 
 
         //delete age
@@ -86,8 +90,8 @@ public class SubmitFormServlet extends HttpServlet {
         demande.setDateNaissance(dateNaissance);
         demande.setRevenus(revenus);
         demande.setProfession(profession);
-        demande.setCoutTotal(coutTotal);
-        demande.setMensualite(mensualite);
+//        demande.setCoutTotal(coutTotal);
+        demande.setMensualite(mensualiteFinal);
 
 
 
@@ -103,8 +107,8 @@ public class SubmitFormServlet extends HttpServlet {
         System.out.println("Date de naissance : " + dateNaissance);
         System.out.println("Revenus : " + revenus);
         System.out.println("Profession : " + profession);
-        System.out.println("Coût total : " + coutTotal);
-        System.out.println("Mensualité : " + mensualite);
+//        System.out.println("Coût total : " + coutTotal);
+        System.out.println("Mensualité : " + mensualiteFinal);
 //        System.out.println("Etat : " + Etat.ACCEPTER);
         // Appeler le service pour créer la demande
         creditDemandeService.createDemande(demande);

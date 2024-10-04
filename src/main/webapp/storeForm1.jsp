@@ -136,7 +136,6 @@
             <p>Montant:</p>
             <p>Durée:</p>
             <p>Mensualité:</p>
-            <p>Frais de dossier:</p>
         </div>
     </div>
 
@@ -149,7 +148,7 @@
 
 
 
-<!--<script src="${pageContext.request.contextPath}/js/script.js"></script>-->
+<script src="${pageContext.request.contextPath}/js/script1.js"></script>
 </body>
 </html>
 

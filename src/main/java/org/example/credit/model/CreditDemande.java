@@ -246,9 +246,9 @@ public class CreditDemande {
     @DecimalMin(value = "0.0", inclusive = false, message = "Le montant de la mensualité doit être positif.")
     private Double mensualite;
 
-    @Column(nullable = true)
-    @DecimalMin(value = "0.0", inclusive = false, message = "Le coût total doit être positif.")
-    private Double coutTotal;
+//    @Column(nullable = true)
+//    @DecimalMin(value = "0.0", inclusive = false, message = "Le coût total doit être positif.")
+//    private Double coutTotal;
 
     @Column(nullable = true)
     @NotEmpty(message = "Le nom ne peut pas être vide.")
@@ -399,13 +399,13 @@ public class CreditDemande {
         this.mensualite = mensualite;
     }
 
-    public Double getCoutTotal() {
-        return coutTotal;
-    }
-
-    public void setCoutTotal(Double coutTotal) {
-        this.coutTotal = coutTotal;
-    }
+//    public Double getCoutTotal() {
+//        return coutTotal;
+//    }
+//
+//    public void setCoutTotal(Double coutTotal) {
+//        this.coutTotal = coutTotal;
+//    }
 
     public String getNom() {
         return nom;
@@ -455,7 +455,7 @@ public class CreditDemande {
         this.telephone = telephone;
     }
 
-    public void calculerCoutTotal() {
-        this.coutTotal = this.mensualite * this.duree;
-    }
+//    public void calculerCoutTotal() {
+//        this.coutTotal = this.mensualite * this.duree;
+//    }
 }

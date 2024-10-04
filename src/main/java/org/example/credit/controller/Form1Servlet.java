@@ -19,12 +19,19 @@ public class Form1Servlet extends HttpServlet {
         String profession = request.getParameter("profession");
         String montant = request.getParameter("montant");
         String duree = request.getParameter("duree");
+        String mensualite = request.getParameter("mensualite");
 
         // Stockage dans la session
         session.setAttribute("project", project);
         session.setAttribute("profession", profession);
         session.setAttribute("montant", montant);
         session.setAttribute("duree", duree);
+        session.setAttribute("mensualite", mensualite);
+        System.out.println(project);
+        System.out.println(profession);
+        System.out.println(montant);
+        System.out.println(duree);
+        System.out.println(mensualite);
         System.out.println("donne1");
 
         // Redirection vers la page suivante

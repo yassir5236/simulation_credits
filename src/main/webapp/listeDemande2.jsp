@@ -24,7 +24,6 @@
         <th>Numéro</th>
         <th>CIN</th>
         <th>Civilité</th>
-        <th>Coût Total</th>
         <th>Date de Naissance</th>
         <th>Durée</th>
         <th>Email</th>
@@ -43,7 +42,7 @@
         <td><%= demande.getNumero() %></td>
         <td><%= demande.getCin() %></td>
         <td><%= demande.getCivilite() %></td>
-        <td><%= demande.getCoutTotal() %></td>
+<%--        <td><%= demande.getCoutTotal() %></td>--%>
         <td><%= demande.getDateNaissance() %></td>
         <td><%= demande.getDuree() %></td>
         <td><%= demande.getEmail() %></td>
