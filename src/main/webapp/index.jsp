@@ -261,7 +261,7 @@
 
 
 
-<script src="${pageContext.request.contextPath}/js/script.js"></script>
+<!--<script src="${pageContext.request.contextPath}/js/script.js"></script>-->
 </body>
 </html>
 

@@ -15,6 +15,7 @@ import org.example.credit.service.CreditDemandeService;
 import org.example.credit.service.impl.CreditDemandeServiceImpl;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/submitForm")
 public class SubmitFormServlet extends HttpServlet {
@@ -110,6 +111,27 @@ public class SubmitFormServlet extends HttpServlet {
         System.out.println("done3");
 
         // Redirection après soumission
-        response.sendRedirect("success.jsp");
+        response.sendRedirect("listeDemande.jsp");
+//        response.sendRedirect("success.jsp");
+
+
     }
+
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<CreditDemande> demandes = creditDemandeService.getAllDemandes();
+        System.out.println("### doGet Method Called ###");
+
+        // Vérification si la liste est vide
+        if (demandes.isEmpty()) {
+            req.setAttribute("message", "Aucune demande de crédit trouvée.");
+        } else {
+            req.setAttribute("demandes", demandes);
+        }
+
+        req.getRequestDispatcher("listeDemande2.jsp").forward(req, resp);
+    }
+
 }
