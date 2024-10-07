@@ -73,7 +73,7 @@ public class CreditDemande {
     private Double revenus;
 
     // Relation Many-to-Many avec Etat
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL) // Ajout de CascadeType.ALL
     @JoinTable(
             name = "etat_demande",
             joinColumns = @JoinColumn(name = "credit_demande_id"),

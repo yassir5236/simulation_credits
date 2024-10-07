@@ -49,6 +49,7 @@ public class DemandeCreditDaoImpl implements DemandeCreditRepository {
             System.out.println(demande);
             transaction.begin();
             em.merge(demande);
+            System.out.println("Etat in dao");
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();

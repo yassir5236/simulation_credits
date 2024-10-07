@@ -56,7 +56,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import org.example.credit.model.CreditDemande;
-import org.example.credit.model.Enum.Etat;
+//import org.example.credit.model.Enum.Etat;
 
 import java.time.LocalDate;
 

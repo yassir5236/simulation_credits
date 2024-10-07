@@ -61,13 +61,26 @@
 
 
     <servlet>
-       <servlet-name>kkkkk</servlet-name>
-       <servlet-class>org.example.credit.controller.ListeDemandeServlet</servlet-class>
-   </servlet>
+        <servlet-name>kkkkk</servlet-name>
+        <servlet-class>org.example.credit.controller.ListeDemandeServlet</servlet-class>
+    </servlet>
 
-   <servlet-mapping>
-       <servlet-name>kkkkk</servlet-name>
-       <url-pattern>/list/dcsd</url-pattern>
-   </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>kkkkk</servlet-name>
+        <url-pattern>/list/dcsd</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>hdjf</servlet-name>
+        <servlet-class>org.example.credit.controller.EtatDemandeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>hdjf</servlet-name>
+        <url-pattern>/etat/change</url-pattern>
+    </servlet-mapping>
+
+   
 
 </web-app>

@@ -74,10 +74,22 @@
             </form>
 
             <!-- Bouton pour changer l'état de la demande -->
+<%--            <form action="<%= request.getContextPath() %>/changerEtatDemande" method="post" style="display:inline;">--%>
+<%--                <input type="hidden" name="demandeId" value="<%= demande.getNumero() %>" />--%>
+<%--                <button type="submit">Changer État</button>--%>
+<%--            </form>--%>
+
             <form action="<%= request.getContextPath() %>/changerEtatDemande" method="post" style="display:inline;">
                 <input type="hidden" name="demandeId" value="<%= demande.getNumero() %>" />
+                <select name="nouvelEtat">
+                    <option value="approuve">Approuvé</option>
+                    <option value="rejete">Rejeté</option>
+                    <option value="en_attente">En attente</option>
+                </select>
                 <button type="submit">Changer État</button>
             </form>
+
+
         </td>
     </tr>
     <%
