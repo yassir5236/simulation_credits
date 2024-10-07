@@ -4,6 +4,7 @@ package org.example.credit.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import javax.management.Descriptor;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -72,22 +73,37 @@ public class CreditDemande {
     @DecimalMin(value = "0.0", inclusive = false, message = "Le revenu doit être positif.")
     private Double revenus;
 
-    // Relation Many-to-Many avec Etat
-    @ManyToMany(cascade = CascadeType.ALL) // Ajout de CascadeType.ALL
-    @JoinTable(
-            name = "etat_demande",
-            joinColumns = @JoinColumn(name = "credit_demande_id"),
-            inverseJoinColumns = @JoinColumn(name = "etat_id")
-    )
-    private Set<Etat> etats = new HashSet<>();
+//    // Relation Many-to-Many avec Etat
+//    @ManyToMany(cascade = CascadeType.ALL) // Ajout de CascadeType.ALL
+//    @JoinTable(
+//            name = "etat_demande",
+//            joinColumns = @JoinColumn(name = "credit_demande_id"),
+//            inverseJoinColumns = @JoinColumn(name = "etat_id"),
+//            columns = dateModife;
+//            columns = Description;
+//    )
+//    private Set<Etat> etats = new HashSet<>();
 
     // Getters et setters pour la relation
-    public Set<Etat> getEtats() {
-        return etats;
+//    public Set<Etat> getEtats() {
+//        return etats;
+//    }
+//
+//    public void setEtats(Set<Etat> etats) {
+//        this.etats = etats;
+//    }
+
+
+    @OneToMany(mappedBy = "creditDemande", cascade = CascadeType.ALL)
+    private Set<CreditDemandeEtat> creditDemandeEtats = new HashSet<>();
+
+    // Getters et setters
+    public Set<CreditDemandeEtat> getCreditDemandeEtats() {
+        return creditDemandeEtats;
     }
 
-    public void setEtats(Set<Etat> etats) {
-        this.etats = etats;
+    public void setCreditDemandeEtats(Set<CreditDemandeEtat> creditDemandeEtats) {
+        this.creditDemandeEtats = creditDemandeEtats;
     }
 
     public CreditDemande() {
@@ -212,3 +228,12 @@ public class CreditDemande {
 
 
 }
+
+
+
+
+
+
+
+
+

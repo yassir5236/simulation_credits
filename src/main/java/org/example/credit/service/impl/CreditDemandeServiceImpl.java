@@ -7,7 +7,9 @@ import org.example.credit.repository.DemandeCreditRepository;
 
 import org.example.credit.service.CreditDemandeService;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CreditDemandeServiceImpl implements CreditDemandeService {
 
@@ -46,4 +48,20 @@ public class CreditDemandeServiceImpl implements CreditDemandeService {
     public List<CreditDemande> searchByEtat(String etat) {
         return demandeCreditRepository.findByEtat(etat);
     }
+
+//    @Override
+//    public List<CreditDemande> filterDemandes(LocalDate date, String etat) {
+//        System.out.println("Filtrer avec date: " + date + " et état: " + etat);
+//        List<CreditDemande> allDemandes = getAllDemandes();
+//
+//        return allDemandes.stream()
+//                .filter(demande -> (date == null || demande.getDateNaissance().equals(date)) &&
+//                        (etat == null || demande.getEtats().stream()
+//                                .anyMatch(e -> e.getEtat().equals(etat))))
+//                .collect(Collectors.toList());
+//    }
+//
+
+
+
 }

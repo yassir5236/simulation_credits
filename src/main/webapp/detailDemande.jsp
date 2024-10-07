@@ -1,12 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="org.example.credit.model.CreditDemande" %>
+<%@ page import="org.example.credit.model.CreditDemandeEtat" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.credit.model.Etat" %>
 <%@ page import="java.util.Set" %>
 
 <%
     // Récupérer l'attribut "demande" depuis la requête
     CreditDemande demande = (CreditDemande) request.getAttribute("demande");
+    Set<CreditDemandeEtat> etats = demande.getCreditDemandeEtats(); // Ensemble des états de la demande
 %>
 <html>
 <head>
@@ -24,29 +25,29 @@
 
 <h3>Historique des états</h3>
 <table border="1">
-
     <thead>
     <tr>
         <th>État</th>
         <th>Date de modification</th>
+        <th>Description</th>
     </tr>
     </thead>
     <tbody>
     <%
-        Set<Etat> etats = demande.getEtats();
         if (etats != null && !etats.isEmpty()) {
-            for (Etat etat : etats) {
+            for (CreditDemandeEtat etat : etats) {
     %>
     <tr>
-        <td><%= etat.getEtat() %></td>
-        <td><%= etat.getDateModife() %></td>
+        <td><%= etat.getEtat().getEtat() %></td> <!-- Nom de l'état -->
+        <td><%= etat.getDateModife() %></td>    <!-- Date de modification -->
+        <td><%= etat.getDescription() != null ? etat.getDescription() : "N/A" %></td> <!-- Justification ou Description -->
     </tr>
     <%
         }
     } else {
     %>
     <tr>
-        <td colspan="2">Aucun état trouvé.</td>
+        <td colspan="3">Aucun état trouvé.</td>
     </tr>
     <%
         }

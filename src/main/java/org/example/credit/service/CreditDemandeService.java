@@ -3,6 +3,8 @@ package org.example.credit.service;
 
 
 import org.example.credit.model.CreditDemande;
+
+import java.time.LocalDate;
 import java.util.List;
 
 public interface CreditDemandeService {
@@ -12,5 +14,7 @@ public interface CreditDemandeService {
     void updateDemande(CreditDemande demande);
     void deleteDemande(Long id);
     List<CreditDemande> searchByEtat(String etat);
+
+//    public List<CreditDemande> filterDemandes(LocalDate date, String etat);
 }
 

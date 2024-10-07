@@ -32,11 +32,8 @@ public class DetailDemandeServlet extends HttpServlet {
             return;
         }
 
-        // Passer les états de la demande à la vue
+        // Récupérer l'historique des états de la demande et le passer à la JSP
         request.setAttribute("demande", demande);
-        request.setAttribute("etats", demande.getEtats());
-
-        // Afficher la vue détailDemande.jsp
         request.getRequestDispatcher("detailDemande.jsp").forward(request, response);
     }
 }
