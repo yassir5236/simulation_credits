@@ -25,7 +25,6 @@ public class SubmitFormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
-        // Récupération des données de la session
         String project = (String) session.getAttribute("project");
         String profession = (String) session.getAttribute("profession");
         String montantStr = (String) session.getAttribute("montant");
@@ -36,7 +35,6 @@ public class SubmitFormServlet extends HttpServlet {
         String email = (String) session.getAttribute("email");
         String telephone = (String) session.getAttribute("telephone");
 
-        // Récupération des paramètres du dernier formulaire
         String civilite = request.getParameter("civilite");
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");
@@ -54,13 +52,11 @@ public class SubmitFormServlet extends HttpServlet {
             return;
         }
 
-        // Conversion des paramètres en types appropriés
         double montant = Double.parseDouble(montantStr);
         int duree = Integer.parseInt(dureeStr);
         double revenus = Double.parseDouble(revenusStr);
         double mensualiteFinal = Double.parseDouble(mensualite);
 
-        // Vérifier que l'utilisateur a au moins 18 ans
         LocalDate dateNaissance = LocalDate.parse(dateNaissanceStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         if (LocalDate.now().getYear() - dateNaissance.getYear() < 18) {
             request.setAttribute("error", "L'utilisateur doit avoir au moins 18 ans.");
@@ -68,15 +64,9 @@ public class SubmitFormServlet extends HttpServlet {
             return;
         }
 
-//        double coutTotal =;
-//        double mensualite=;
-
-
-        //delete age
-        //calculer cout total
-
 
         CreditDemande demande = new CreditDemande();
+        demande.setProjet(project);
         demande.setMontant(montant);
         demande.setDuree(duree);
         demande.setNom(nom);
@@ -85,12 +75,10 @@ public class SubmitFormServlet extends HttpServlet {
         demande.setTelephone(telephone);
         demande.setCivilite(civilite);
         demande.setCin(cin);
-//        demande.setEtat(Etat.ACCEPTER);
-//        demande.setDate(LocalDate.now()); // Ajout de la date de la demande
+
         demande.setDateNaissance(dateNaissance);
         demande.setRevenus(revenus);
         demande.setProfession(profession);
-//        demande.setCoutTotal(coutTotal);
         demande.setMensualite(mensualiteFinal);
 
 
@@ -107,16 +95,12 @@ public class SubmitFormServlet extends HttpServlet {
         System.out.println("Date de naissance : " + dateNaissance);
         System.out.println("Revenus : " + revenus);
         System.out.println("Profession : " + profession);
-//        System.out.println("Coût total : " + coutTotal);
         System.out.println("Mensualité : " + mensualiteFinal);
-//        System.out.println("Etat : " + Etat.ACCEPTER);
-        // Appeler le service pour créer la demande
+
         creditDemandeService.createDemande(demande);
         System.out.println("done3");
 
-        // Redirection après soumission
-        response.sendRedirect("listeDemande.jsp");
-//        response.sendRedirect("success.jsp");
+        response.sendRedirect("listeDemande2.jsp");
 
 
     }
@@ -128,7 +112,6 @@ public class SubmitFormServlet extends HttpServlet {
         List<CreditDemande> demandes = creditDemandeService.getAllDemandes();
         System.out.println("### doGet Method Called ###");
 
-        // Vérification si la liste est vide
         if (demandes.isEmpty()) {
             req.setAttribute("message", "Aucune demande de crédit trouvée.");
         } else {

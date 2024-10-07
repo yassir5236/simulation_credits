@@ -1,0 +1,318 @@
+/*!* Reset *!*/
+/** {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+/*!* Body Styling *!*/
+/*body {*/
+/*  font-family: 'Roboto', sans-serif;*/
+/*  background-color: #f4f7f9;*/
+/*  color: #333;*/
+/*  padding: 20px;*/
+/*  line-height: 1.6;*/
+/*}*/
+
+
+/*form.filter_form {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  gap: 15px;*/
+/*  max-width: 400px;*/
+/*  margin: 20px auto;*/
+/*  background-color: #f9f9f9;*/
+/*  padding: 20px;*/
+/*  border-radius: 8px;*/
+/*  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+/*form.filter_form .filter_group {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  gap: 8px;*/
+/*}*/
+
+/*form.filter_form .filter_label {*/
+/*  font-size: 14px;*/
+/*  color: #555;*/
+/*}*/
+
+/*form.filter_form .input_date_filter,*/
+/*form.filter_form .select_filter {*/
+/*  padding: 10px;*/
+/*  border: 2px solid #4a90e2;*/
+/*  border-radius: 5px;*/
+/*  font-size: 16px;*/
+/*  background-color: #fff;*/
+/*  color: #333;*/
+/*}*/
+
+/*form.filter_form .filter_button {*/
+/*  padding: 10px;*/
+/*  background-color: #b7a806;*/
+/*  color: white;*/
+/*  border: none;*/
+/*  border-radius: 5px;*/
+/*  font-size: 16px;*/
+/*  cursor: pointer;*/
+/*  transition: background-color 0.3s ease;*/
+/*}*/
+
+/*form.filter_form .filter_button:hover {*/
+/*  background-color: #357ABD;*/
+/*}*/
+
+/*!* Heading *!*/
+/*h2 {*/
+/*  font-size: 24px;*/
+/*  color: #4a90e2;*/
+/*  margin-bottom: 20px;*/
+/*  text-align: center;*/
+/*  font-weight: 700;*/
+/*}*/
+
+/*!* Form Styling *!*/
+/*form {*/
+/*  text-align: center;*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+/*form button {*/
+/*  background-color: #4a90e2;*/
+/*  color: #fff;*/
+/*  border: none;*/
+/*  padding: 10px 20px;*/
+/*  font-size: 16px;*/
+/*  border-radius: 5px;*/
+/*  cursor: pointer;*/
+/*  transition: background-color 0.3s ease;*/
+/*}*/
+
+/*form button:hover {*/
+/*  background-color: #357ABD;*/
+/*}*/
+
+/*!* Table Styling *!*/
+/*table {*/
+/*  width: 100%;*/
+/*  border-collapse: collapse;*/
+/*  margin: 20px 0;*/
+/*  font-size: 16px;*/
+/*}*/
+
+/*table th, table td {*/
+/*  padding: 12px;*/
+/*  border: 1px solid #e0e0e0;*/
+/*  text-align: left;*/
+/*  background-color: #fff;*/
+/*}*/
+
+/*table th {*/
+/*  background-color: #4a90e2;*/
+/*  color: #fff;*/
+/*  font-weight: 600;*/
+/*  text-transform: uppercase;*/
+/*}*/
+
+/*table tr:nth-child(even) {*/
+/*  background-color: #f9f9f9;*/
+/*}*/
+
+
+
+
+
+
+/*!* Responsive Design *!*/
+/*@media (max-width: 768px) {*/
+/*  table {*/
+/*    font-size: 14px;*/
+/*  }*/
+
+/*  table th, table td {*/
+/*    padding: 10px;*/
+/*  }*/
+
+/*  h2 {*/
+/*    font-size: 20px;*/
+/*  }*/
+
+/*  form button {*/
+/*    font-size: 14px;*/
+/*    padding: 8px 16px;*/
+/*  }*/
+/*}*/
+
+/*@media (max-width: 480px) {*/
+/*  table {*/
+/*    font-size: 12px;*/
+/*  }*/
+
+/*  h2 {*/
+/*    font-size: 18px;*/
+/*  }*/
+
+/*  form button {*/
+/*    font-size: 12px;*/
+/*    padding: 6px 12px;*/
+/*  }*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style global pour le corps */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Titre principal de la page */
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #4a90e2;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Style du formulaire de filtrage */
+.filter_form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto 40px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre du formulaire de filtrage */
+.filter_title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Style des groupes de champs du formulaire */
+.filter_group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Labels du formulaire */
+.filter_label {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Champ input pour la date */
+.input_date_filter {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input_date_filter:focus {
+  border-color: #4a90e2;
+}
+
+/* Selecteur de l'état */
+.select_filter {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.select_filter:focus {
+  border-color: #4a90e2;
+}
+
+/* Bouton de recherche */
+.filter_button {
+  padding: 10px 15px;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.filter_button:hover {
+  background-color: #357ABD;
+}
+
+/* Style de la table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* En-tête de la table */
+table th {
+  background-color: #4a90e2;
+  color: white;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+/* Corps de la table */
+table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+/* Style pour les lignes de la table */
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Message lorsque aucune demande n'est trouvée */
+table td[colspan="14"] {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  padding: 20px;
+}

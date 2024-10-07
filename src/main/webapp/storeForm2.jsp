@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,11 +78,11 @@
         <div style="background-color: #F1F2F6; width: 100%; color:#30435c; font-size: 16px;padding:10px;">Mon projet</div>
         <p style="color: #02AFBC">Revolving</p>
 
-        <div id="infos-personnelles" class="infos-personnelles">
-            <p style="background-color:#F1F2F6; font-size: 16px; color:#30435c; width: 100%; padding:10px;">Coordonnées et infos personnelles</p>
-            <p>Email:</p>
-            <p>Telephone:</p>
-        </div>
+<%--        <div id="infos-personnelles" class="infos-personnelles">--%>
+<%--            <p style="background-color:#F1F2F6; font-size: 16px; color:#30435c; width: 100%; padding:10px; display: none">Coordonnées et infos personnelles</p>--%>
+<%--            <p>Email:</p>--%>
+<%--            <p>Telephone:</p>--%>
+<%--        </div>--%>
 
         <div id="detait-mon-credit" class="detait-mon-credit">
             <p style="background-color:#F1F2F6; font-size: 16px; color:#30435c; width: 100%; padding:10px;">Détails de mon crédit</p>

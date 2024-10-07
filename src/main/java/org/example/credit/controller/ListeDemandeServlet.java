@@ -20,9 +20,8 @@ public class ListeDemandeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<CreditDemande> demandes = creditDemandeService.getAllDemandes();
         System.out.println("### doGet Method Called ###");
-        System.out.println("Nombre de demandes récupérées: " + demandes.size()); // Ajoutez ceci pour le débogage
+        System.out.println("Nombre de demandes récupérées: " + demandes.size());
 
-        // Vérification si la liste est vide
         if (demandes.isEmpty()) {
             req.setAttribute("message", "Aucune demande de crédit trouvée.");
         } else {
