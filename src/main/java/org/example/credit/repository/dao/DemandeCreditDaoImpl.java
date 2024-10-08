@@ -79,42 +79,80 @@ public class DemandeCreditDaoImpl implements DemandeCreditRepository {
         }
     }
 
+
+//    @Override
+//    public List<CreditDemande> findByDateAndEtat(LocalDate dateModife, String etat) {
+//        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+//        List<CreditDemande> result = new ArrayList<>();
+//
+//        try {
+//            // Construction de la requête JPQL pour filtrer par date de modification et état
+//            String queryStr = "SELECT d.creditDemande FROM CreditDemandeEtat d WHERE 1=1";
+//
+//            // Ajout de la condition de filtre par date de modification si présente
+//            if (dateModife != null) {
+//                queryStr += " AND d.dateModife = :dateModife";
+//            }
+//
+//            // Ajout de la condition de filtre par état si présent
+//            if (etat != null && !etat.isEmpty()) {
+//                queryStr += " AND d.etat.etat = :etat";
+//            }
+//
+//            // Création de la requête avec les conditions dynamiques
+//            TypedQuery<CreditDemande> query = em.createQuery(queryStr, CreditDemande.class);
+//
+//            // Ajout des paramètres dans la requête
+//            if (dateModife != null) {
+//                query.setParameter("dateModife", dateModife);
+//            }
+//
+//            if (etat != null && !etat.isEmpty()) {
+//                query.setParameter("etat", etat);
+//            }
+//
+//            // Exécution de la requête et récupération des résultats
+//            result = query.getResultList();
+//        } catch (Exception e) {
+//            e.printStackTrace();  // Gestion des exceptions
+//        } finally {
+//            em.close();  // Fermeture de l'EntityManager
+//        }
+//
+//        return result;  // Retourne la liste filtrée
+//    }
+
+
     @Override
-    public List<CreditDemande> findByEtat(String etat) {
+    public List<CreditDemande> rechercherDemandeCredit(LocalDate dateModife, String etat) {
         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-        TypedQuery<CreditDemande> query = em.createQuery("SELECT d FROM CreditDemande d WHERE d.etat = :etat", CreditDemande.class);
-        query.setParameter("etat", etat);
+
+        // Construction de la requête JPQL avec jointures et filtres conditionnels
+        String jpql = "SELECT cd FROM CreditDemande cd " +
+                "LEFT JOIN cd.creditDemandeEtats cde " +
+                "LEFT JOIN cde.etat e " +
+                "WHERE 1=1 "; // Cette condition 1=1 est utilisée pour faciliter l'ajout dynamique de filtres
+
+        if (dateModife != null) {
+            jpql += "AND cde.dateModife = :dateModife ";
+        }
+
+        if (etat != null && !etat.isEmpty()) {
+            jpql += "AND e.etat = :etat ";
+        }
+
+        TypedQuery<CreditDemande> query = em.createQuery(jpql, CreditDemande.class);
+
+        // Définir les paramètres de la requête si les filtres sont appliqués
+        if (dateModife != null) {
+            query.setParameter("dateModife", dateModife);
+        }
+
+        if (etat != null && !etat.isEmpty()) {
+            query.setParameter("etat", etat);
+        }
+
+        // Renvoyer la liste des résultats
         return query.getResultList();
-    }
-
-
-    @Override
-    public List<CreditDemande> findByDateAndEtat(LocalDate date, String etat) {
-        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-        List<CreditDemande> result = new ArrayList<>();
-
-        String queryStr = "SELECT d FROM CreditDemande d WHERE 1=1"; // Commence avec une condition vraie
-
-        if (date != null) {
-            queryStr += " AND d.dateDemande = :date"; // Ajoute la condition pour la date
-        }
-
-        if (etat != null && !etat.isEmpty()) {
-            queryStr += " AND d.etat = :etat"; // Ajoute la condition pour l'état
-        }
-
-        TypedQuery<CreditDemande> query = em.createQuery(queryStr, CreditDemande.class);
-
-        if (date != null) {
-            query.setParameter("date", date); // Définit le paramètre pour la date
-        }
-
-        if (etat != null && !etat.isEmpty()) {
-            query.setParameter("etat", etat); // Définit le paramètre pour l'état
-        }
-
-        result = query.getResultList(); // Exécute la requête et récupère les résultats
-        em.close(); // Ferme l'EntityManager
-        return result; // Retourne les résultats filtrés
     }
 }

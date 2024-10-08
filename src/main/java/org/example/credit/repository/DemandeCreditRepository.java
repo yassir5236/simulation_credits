@@ -11,7 +11,7 @@ public interface DemandeCreditRepository {
     void save(CreditDemande demande);
     void update(CreditDemande demande);
     void delete(Long id);
-    List<CreditDemande> findByEtat(String etat);
-    List<CreditDemande> findByDateAndEtat(LocalDate date, String etat) ;
+//    List<CreditDemande> findByEtat(String etat);
+    List<CreditDemande> rechercherDemandeCredit(LocalDate date, String etat) ;
 
 }

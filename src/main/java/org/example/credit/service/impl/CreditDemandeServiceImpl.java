@@ -44,23 +44,17 @@ public class CreditDemandeServiceImpl implements CreditDemandeService {
         demandeCreditRepository.delete(id);
     }
 
+//    @Override
+//    public List<CreditDemande> searchByEtat(String etat) {
+//        return demandeCreditRepository.findByEtat(etat);
+//    }
+
     @Override
-    public List<CreditDemande> searchByEtat(String etat) {
-        return demandeCreditRepository.findByEtat(etat);
+    public List<CreditDemande> filterDemandes(LocalDate date, String etat) {
+        System.out.println("Filtrer avec date: " + date + " et état: " + etat);
+        return demandeCreditRepository.rechercherDemandeCredit(date, etat);  // Appel à la méthode DAO
     }
 
-//    @Override
-//    public List<CreditDemande> filterDemandes(LocalDate date, String etat) {
-//        System.out.println("Filtrer avec date: " + date + " et état: " + etat);
-//        List<CreditDemande> allDemandes = getAllDemandes();
-//
-//        return allDemandes.stream()
-//                .filter(demande -> (date == null || demande.getDateNaissance().equals(date)) &&
-//                        (etat == null || demande.getEtats().stream()
-//                                .anyMatch(e -> e.getEtat().equals(etat))))
-//                .collect(Collectors.toList());
-//    }
-//
 
 
 

@@ -13,8 +13,8 @@ public interface CreditDemandeService {
     void createDemande(CreditDemande demande);
     void updateDemande(CreditDemande demande);
     void deleteDemande(Long id);
-    List<CreditDemande> searchByEtat(String etat);
+//    List<CreditDemande> searchByEtat(String etat);
 
-//    public List<CreditDemande> filterDemandes(LocalDate date, String etat);
+    public List<CreditDemande> filterDemandes(LocalDate date, String etat);
 }
 
