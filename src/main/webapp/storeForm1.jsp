@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<h1>Demander mon crédit en ligne</h1>
+<h1 class="titre_global">Demander mon crédit en ligne</h1>
 <div class="contenaire-global">
 
 

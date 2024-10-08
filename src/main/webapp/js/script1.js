@@ -8,37 +8,26 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(buttonForm1);
 
 
-    block1.addEventListener('click', () => {
+    window.onload = function() {
+        if (block1) {
+            console.log('im in window function');
+            block1.style.marginTop = '-10px';
+            block1.style.color = '#292D5A';
+            block1.style.backgroundColor = '#FDDF35';
 
+            if (block2) {
+                block2.style.marginTop = '0px';
+                block2.style.backgroundColor = '#9B9B9B';
+                block2.style.color = 'white';
+            }
 
-        // if(JSON.parse(localStorage.getItem('formData1'))){
-        //     alert("data trouver");
-        //     localStorage.removeItem('formData1');
-        //     alert("data removed");
-        // }
-
-        // container1.style.display = 'block';
-        // container2.style.display = 'none';
-        // container3.style.display = 'none';
-        //detailCredit.style.display = 'none';
-        // infosPersonnelles.style.display = 'none';
-        block1.style.marginTop = '-10px';
-        block3.style.marginTop = '0px';
-        block1.style.color = '#292D5A';
-        block1.style.backgroundColor = '#FDDF35';
-
-
-        block2.style.marginTop = '0px';
-        block2.style.backgroundColor = '#9B9B9B';
-        block2.style.color = 'white';
-        block3.style.backgroundColor = '#9B9B9B';
-        block3.style.color = 'white';
-
-
-
-
-    })
-
+            if (block3) {
+                block3.style.marginTop = '0px';
+                block3.style.backgroundColor = '#9B9B9B';
+                block3.style.color = 'white';
+            }
+        }
+    };
 
     block2.addEventListener('click', () => {
 
