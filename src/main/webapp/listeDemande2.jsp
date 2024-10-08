@@ -197,21 +197,23 @@
 
                 <button type="submit">Changer État</button>
 
-                <%
-                    String successMessage = (String) session.getAttribute("successMessage");
-                    if (successMessage != null) {
-                %>
-                <div class="alert alert-success">
-                    <%= successMessage %>
-                </div>
-                <%
-                        // Retirer le message de la session après l'affichage pour éviter qu'il se répète
-                        session.removeAttribute("successMessage");
-                    }
-                %>
+
             </form>
         </td>
     </tr>
+
+    <%
+        String successMessage = (String) session.getAttribute("successMessage");
+        if (successMessage != null) {
+    %>
+    <div class="alert alert-success">
+        <%= successMessage %>
+    </div>
+    <%
+            // Retirer le message de la session après l'affichage pour éviter qu'il se répète
+            session.removeAttribute("successMessage");
+        }
+    %>
     <%
         }
     %>
@@ -225,6 +227,6 @@
     }
 %>
 <br>
-<a href="<%= request.getContextPath() %>/index.jsp">Retour à l'accueil</a>
+<a href="<%= request.getContextPath() %>/storeForm3.jsp">Retour à l'accueil</a>
 </body>
 </html>

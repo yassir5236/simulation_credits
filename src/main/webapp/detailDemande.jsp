@@ -56,6 +56,6 @@
 </table>
 
 <br>
-<a href="<%= request.getContextPath() %>/listeDemande2.jsp">Retour à la liste</a>
+<a href="<%= request.getContextPath() %>/list">Retour à la liste</a>
 </body>
 </html>

@@ -100,7 +100,9 @@ public class SubmitFormServlet extends HttpServlet {
         creditDemandeService.createDemande(demande);
         System.out.println("done3");
 
-        response.sendRedirect("listeDemande2.jsp");
+//        response.sendRedirect("listeDemande2.jsp");
+
+        response.sendRedirect(request.getContextPath() + "/list");
 
 
     }
