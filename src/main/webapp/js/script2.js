@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', function () {
     afficherRecapitulatif();
 
@@ -41,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
     tel.addEventListener('input', validateTelInput);
 
     form.addEventListener('submit', function (e) {
-        let errorMessage = ''; // Initialiser le message d'erreur
+        let errorMessage = '';
 
         if (!validateEmailInput()) {
             errorMessage += '.Veuillez saisir un email valide.<br>';
@@ -51,12 +49,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (errorMessage) {
-            e.preventDefault(); // Empêche l'envoi du formulaire
-            showPopup(errorMessage); // Affiche le popup avec le message d'erreur
+            e.preventDefault();
+            showPopup(errorMessage);
         }
     });
-
-
 
 
     const validateEmail = (email) => {
@@ -64,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return re.test(email);
     }
 
-    // Regex pour vérifier le numéro de téléphone
+
     const validateTel = (tel) => {
         const re = /^06[0-9]{8}$/;
         return re.test(tel);
@@ -78,12 +74,11 @@ document.addEventListener('DOMContentLoaded', function () {
         popup.style.display = 'flex';
     }
 
-    document.getElementById('closePopup').addEventListener('click', function() {
+    document.getElementById('closePopup').addEventListener('click', function () {
         popup.style.display = 'none';
     });
 
 
-    // Bloc 1
     block1.addEventListener('click', () => {
         block1.style.marginTop = '-10px';
         block1.style.color = '#292D5A';
@@ -119,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
         block2.style.color = 'white';
     });
 
-    // Fonction pour sauvegarder les informations dans localStorage
     buttonForm2.addEventListener('click', (e) => {
         const email = document.getElementById('email').value;
         const tel = document.getElementById('tel').value;
@@ -129,11 +123,9 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         console.log(infos2);
         localStorage.setItem('formData2', JSON.stringify(infos2));
-        // alert("Page 2 sauvegardée");
         afficherRecapitulatif();
     });
 
-    // Affichage des données récapitulatives
     function afficherRecapitulatif() {
         console.log("Affichage du récapitulatif");
         const formData1 = JSON.parse(localStorage.getItem('formData1'));
@@ -149,7 +141,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Fonction exécutée au chargement de la fenêtre
     window.onload = function () {
         console.log('Chargement de la fenêtre');
         if (block2) {

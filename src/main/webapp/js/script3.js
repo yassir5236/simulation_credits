@@ -51,9 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const spanBouton3 = document.getElementById('span-bouton3');
 
 
-
-
-
     const buttonForm31 = document.getElementById('button-form31');
     const buttonForm32 = document.getElementById('button-form32');
 
@@ -76,10 +73,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return age > 18 || (age === 18 && m >= 0);
     };
 
-// Validation pour le nom (max 100 caractères)
     const validateNomInput = () => {
         const nomValue = nom.value.trim();
-        if (nomValue.length > 0 && nomValue.length <= 100) {
+        const nomPattern = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/; // Lettres, accents, espaces, apostrophes et tirets autorisés
+        if (nomPattern.test(nomValue) && nomValue.length <= 100) {
             nom.style.color = '#02AFBC';
             nom.style.fontSize = "16px";
             return true;
@@ -89,10 +86,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-// Validation pour le prénom (max 100 caractères)
     const validatePrenomInput = () => {
         const prenomValue = prenom.value.trim();
-        if (prenomValue.length > 3 && prenomValue.length <= 100) {
+        const prenomPattern = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s'-]+$/; // Lettres, accents, espaces, apostrophes et tirets autorisés
+        if (prenomPattern.test(prenomValue) && prenomValue.length > 3 && prenomValue.length <= 100) {
             prenom.style.color = '#02AFBC';
             prenom.style.fontSize = "16px";
             return true;
@@ -105,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Validation pour le CIN (max 12 caractères et alphanumérique)
     const validateCinInput = () => {
         const cinValue = cin.value.trim();
-        const cinPattern = /^[A-Z0-9]{1,12}$/;  // Alphanumérique, jusqu'à 12 caractères
+        const cinPattern = /^[A-Z0-9]{1,12}$/;
         if (cinPattern.test(cinValue)) {
             cin.style.color = '#02AFBC';
             cin.style.fontSize = "16px";
@@ -142,28 +139,36 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-// Gérer la validation lors du clic sur le bouton
+
+    cin.addEventListener('input', validateCinInput);
+    prenom.addEventListener('input', validatePrenomInput);
+    nom.addEventListener('input', validateNomInput);
+    dateNaissance.addEventListener('input', validateDateNaissanceInput);
+    revenus.addEventListener('input', validateRevenusInput);
+
+
+
     buttonForm.addEventListener('click', function (e) {
         let errorMessage = '';
 
         if (!validateNomInput()) {
-            errorMessage += 'Veuillez saisir un nom valide (maximum 100 caractères).<br>';
+            errorMessage += '.Veuillez saisir un nom valide .<br>';
         }
         if (!validatePrenomInput()) {
-            errorMessage += 'Veuillez saisir un prénom valide (maximum 100 caractères).<br>';
+            errorMessage += '.Veuillez saisir un prénom valide .<br>';
         }
         if (!validateCinInput()) {
-            errorMessage += 'Veuillez saisir un numéro CIN valide (maximum 12 caractères, alphanumérique).<br>';
+            errorMessage += '.Veuillez saisir un numéro CIN valide .<br>';
         }
         if (!validateDateNaissanceInput()) {
             errorMessage += 'Vous devez avoir au moins 18 ans.<br>';
         }
         if (!validateRevenusInput()) {
-            errorMessage += 'Le montant des revenus doit être compris entre 0 et 1 milliard.<br>';
+            errorMessage += '.Le montant des revenus doit être compris entre 1000 et 1 milliard.<br>';
         }
 
         if (errorMessage) {
-            e.preventDefault();  // Empêche l'envoi du formulaire si des erreurs sont présentes
+            e.preventDefault();
             showPopup(errorMessage);
         }
     });
@@ -173,22 +178,9 @@ document.addEventListener('DOMContentLoaded', function () {
         popup.style.display = 'flex';
     }
 
-    document.getElementById('closePopup').addEventListener('click', function() {
+    document.getElementById('closePopup').addEventListener('click', function () {
         popup.style.display = 'none';
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     block1.addEventListener('click', () => {
@@ -211,7 +203,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     block2.addEventListener('click', () => {
-
 
 
         block2.style.marginTop = '-10px';
@@ -254,23 +245,19 @@ document.addEventListener('DOMContentLoaded', function () {
             block3.style.marginTop = '-10px';
             block3.style.color = '#292D5A';
             block3.style.backgroundColor = '#FDDF35';
-            if(block2){
+            if (block2) {
                 block2.style.marginTop = '0px';
                 block2.style.backgroundColor = '#02AFBC';
                 block2.style.color = 'white';
             }
 
-            if(block1){
+            if (block1) {
                 block1.style.color = 'white';
                 block1.style.backgroundColor = '#02AFBC';
                 block1.style.marginTop = '0px';
             }
         }
     };
-
-
-
-
 
 
     buttonForm31.addEventListener('click', (e) => {

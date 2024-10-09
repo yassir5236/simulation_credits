@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(buttonForm1);
 
 
-    window.onload = function() {
+    window.onload = function () {
         if (block1) {
             console.log('im in window function');
             block1.style.marginTop = '-10px';
@@ -31,11 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     block2.addEventListener('click', () => {
 
-        //container1.style.display = 'none';
-        //container2.style.display = 'block';
-        //container3.style.display = 'none';
-        //detailCredit.style.display = 'flex';
-        //infosPersonnelles.style.display = 'none';
 
         block2.style.marginTop = '-10px';
         block1.style.marginTop = '0px';
@@ -52,12 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     block3.addEventListener('click', () => {
-
-        //   container1.style.display = 'none';
-        // container2.style.display = 'none';
-        //container3.style.display = 'block';
-        //detailCredit.style.display = 'flex';
-        //infosPersonnelles.style.display = 'flex';
 
         block3.style.marginTop = '-10px';
         block2.style.marginTop = '0px';
@@ -77,13 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     buttonForm1.addEventListener('click', (e) => {
-        //e.preventDefault();
-        // console.log('Bouton cliqué');
-
-        // if(JSON.parse(localStorage.getItem('formData1'))){M
-        //     alert("data trouver");
-        //     localStorage.removeItem('formData1');
-        // }
 
 
         const selectedProject = document.getElementById('project').value;
@@ -102,11 +84,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log(infos1);
 
-        //   container1.style.display = 'none';
-        // container2.style.display = 'block';
-        //container3.style.display = 'none';
-        //detailCredit.style.display = 'flex';
-        //infosPersonnelles.style.display = 'none';
 
         block2.style.marginTop = '-10px';
         block1.style.marginTop = '0px';
@@ -121,10 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         localStorage.setItem('formData1', JSON.stringify(infos1));
-        // alert("new stock")
-        // console.log(localStorage.getItem('formData1'));  // Vérifiez ici si les données sont correctement sauvegardées
 
-        // console.log("Success");
         afficherRecapitulatif();
 
     });
@@ -150,10 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-
-
-
-// Sélection des éléments du DOM
     const slider = document.getElementById('montantRange'); // Montant (range)
     const numberInput = document.getElementById('amount'); // Montant (number input)
     const durationSlider = document.getElementById('dureeRange'); // Durée (range)
@@ -161,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const mensualiteSlider = document.getElementById('mensualiteRange'); // Mensualité (range)
     const mensualiteValue = document.getElementById('mensualite'); // Mensualité (number input)
 
-    const tauxInteretAnnuel = 0.12; // Taux d'intérêt annuel
+    const tauxInteretAnnuel = 0.12;
 
 // Fonction pour calculer la mensualité
     function calculerMensualite(capital, dureeEnMois, tauxAnnuel) {
@@ -170,14 +140,12 @@ document.addEventListener('DOMContentLoaded', function () {
         return mensualite.toFixed(2);
     }
 
-// Fonction pour calculer la durée à partir de la mensualité
     function calculerDuree(capital, mensualite, tauxAnnuel) {
         const tauxMensuel = tauxAnnuel / 12;
         const dureeEnMois = -Math.log(1 - (capital * tauxMensuel) / mensualite) / Math.log(1 + tauxMensuel);
         return Math.round(dureeEnMois);
     }
 
-// Mise à jour de la mensualité
     function updateMensualite() {
         const capital = parseFloat(numberInput.value);
         const dureeEnMois = parseInt(durationValue.value);
@@ -187,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function () {
         mensualiteSlider.value = mensualite;
     }
 
-// Mise à jour de la durée en fonction de la mensualité
     function updateDureeFromMensualite() {
         const capital = parseFloat(numberInput.value);
         const mensualite = parseFloat(mensualiteValue.value);
@@ -197,7 +164,6 @@ document.addEventListener('DOMContentLoaded', function () {
         durationSlider.value = dureeEnMois;
     }
 
-// Événements pour synchroniser les sliders et les inputs
     slider.addEventListener('input', function () {
         numberInput.value = slider.value;
         updateMensualite();
@@ -228,10 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
         updateDureeFromMensualite();
     });
 
-// Initialiser la mensualité
     updateMensualite();
-
-
 
 
 });
