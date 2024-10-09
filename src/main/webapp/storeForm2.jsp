@@ -33,9 +33,9 @@
 
         <div id="container2"  class="container2">
 
-            <form class="mes-coordonnées" action="${pageContext.request.contextPath}/storeForm2" method="post">
-                <input type="email" id="email" value="" name="email" placeholder="Email*">
-                <input type="tel" id="tel" value="" name="tel" placeholder="Téléphone mobile*">
+            <form id="form"  class="mes-coordonnées" action="${pageContext.request.contextPath}/storeForm2" method="post">
+                <input type="email" id="email" value="" name="email" placeholder="Email*" required>
+                <input type="tel" id="tel" value="" name="tel" placeholder="Téléphone mobile*" required>
 
                 <div class="divBoutton">
                     <button id="button-form2" class="button-form1" type="submit">
@@ -98,6 +98,13 @@
 
 
 
+
+<div class="popup" id="popup" style="display: none; background-color: rgba(0, 0, 0, 0.7); width: 100%; height: 100%; position: fixed; top: 0; left: 0;  justify-content: center; align-items: center;">
+    <div class="popup-content" style="background-color: white; padding: 20px; border-radius: 10px; width: 900px; text-align: center; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
+        <p class="popupMessage" id="popupMessage" style="margin: 0; font-size: 16px; color: red;">Message d'erreur ici.</p>
+        <button class="closePopup" id="closePopup" style="margin-top: 15px; padding: 10px 15px; border: none; border-radius: 5px; background-color: #02AFBC; color: white; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;">Fermer</button>
+    </div>
+</div>
 
 
 

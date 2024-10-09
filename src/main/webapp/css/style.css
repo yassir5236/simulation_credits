@@ -271,3 +271,54 @@ input[type=range]::-webkit-slider-thumb {
     display: flex;
     gap: 20px
 }
+
+
+/* Style du popup d'arrière-plan */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex; /* Ajoutez flex pour centrer le contenu */
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement */
+}
+
+/* Style du contenu du popup */
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px; /* Arrondi des coins */
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre douce autour du popup */
+}
+
+/* Style du message dans le popup */
+.popupMessage {
+    margin: 0;
+    font-size: 16px;
+    color: #292D5A; /* Couleur de texte */
+}
+
+/* Style du bouton de fermeture */
+.closePopup {
+    margin-top: 15px; /* Espacement au-dessus du bouton */
+    padding: 10px 15px; /* Espacement intérieur du bouton */
+    border: none;
+    border-radius: 5px; /* Arrondi des coins */
+    background-color: #02AFBC; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    font-size: 16px;
+    cursor: pointer; /* Changement de curseur pour indiquer l'interaction */
+    transition: background-color 0.3s ease; /* Effet de transition */
+}
+
+/* Effet au survol du bouton */
+.closePopup:hover {
+    background-color: #029C9B; /* Couleur de fond au survol */
+}

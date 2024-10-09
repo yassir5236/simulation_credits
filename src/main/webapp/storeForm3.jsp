@@ -129,6 +129,12 @@
 </div>
 
 
+<div class="popup" id="popup" style="display: none; background-color: rgba(0, 0, 0, 0.7); width: 100%; height: 100%; position: fixed; top: 0; left: 0;  justify-content: center; align-items: center;">
+    <div class="popup-content" style="background-color: white; padding: 20px; border-radius: 10px; width: 400px; text-align: center; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);">
+        <p class="popupMessage" id="popupMessage" style="margin: 0; font-size: 16px; color: red;">Message d'erreur ici.</p>
+        <button class="closePopup" id="closePopup" style="margin-top: 15px; padding: 10px 15px; border: none; border-radius: 5px; background-color: #02AFBC; color: white; font-size: 16px; cursor: pointer; transition: background-color 0.3s ease;">Fermer</button>
+    </div>
+</div>
 <script src="${pageContext.request.contextPath}/js/script3.js"></script>
 </body>
 </html>

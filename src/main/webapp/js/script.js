@@ -201,7 +201,7 @@ buttonForm1.addEventListener('click', (e) => {
 
 
     localStorage.setItem('formData1', JSON.stringify(infos1));
-     alert("new stock")
+     // alert("new stock")
     // console.log(localStorage.getItem('formData1'));  // Vérifiez ici si les données sont correctement sauvegardées
 
     // console.log("Success");

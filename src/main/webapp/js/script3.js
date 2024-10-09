@@ -4,9 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function afficherRecapitulatif() {
         console.log("im in affiche foncton");
         const formData1 = JSON.parse(localStorage.getItem('formData1'));
-        // const profession= formData1.profession;
-        // console.log(profession);
-        // console.log(formData1);
+
         const formData2 = JSON.parse(localStorage.getItem('formData2'));
 
         const formData3 = JSON.parse(localStorage.getItem('formData3'));
@@ -60,20 +58,142 @@ document.addEventListener('DOMContentLoaded', function () {
     const buttonForm32 = document.getElementById('button-form32');
 
 
+    const nom = document.getElementById('nom');
+    const prenom = document.getElementById('prenom');
+    const cin = document.getElementById('cin');
+    const dateNaissance = document.getElementById('date_naissance');
+    const revenus = document.getElementById('revenus');
+    const buttonForm = document.getElementById('button-form31');
+    const popup = document.getElementById('popup');
+    const popupMessage = document.getElementById('popupMessage');
+
+// Vérifier si la personne a au moins 18 ans
+    const isOlderThan18 = (dateString) => {
+        const today = new Date();
+        const birthDate = new Date(dateString);
+        const age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        return age > 18 || (age === 18 && m >= 0);
+    };
+
+// Validation pour le nom (max 100 caractères)
+    const validateNomInput = () => {
+        const nomValue = nom.value.trim();
+        if (nomValue.length > 0 && nomValue.length <= 100) {
+            nom.style.color = '#02AFBC';
+            nom.style.fontSize = "16px";
+            return true;
+        } else {
+            nom.style.color = 'red';
+            return false;
+        }
+    };
+
+// Validation pour le prénom (max 100 caractères)
+    const validatePrenomInput = () => {
+        const prenomValue = prenom.value.trim();
+        if (prenomValue.length > 3 && prenomValue.length <= 100) {
+            prenom.style.color = '#02AFBC';
+            prenom.style.fontSize = "16px";
+            return true;
+        } else {
+            prenom.style.color = 'red';
+            return false;
+        }
+    };
+
+// Validation pour le CIN (max 12 caractères et alphanumérique)
+    const validateCinInput = () => {
+        const cinValue = cin.value.trim();
+        const cinPattern = /^[A-Z0-9]{1,12}$/;  // Alphanumérique, jusqu'à 12 caractères
+        if (cinPattern.test(cinValue)) {
+            cin.style.color = '#02AFBC';
+            cin.style.fontSize = "16px";
+            return true;
+        } else {
+            cin.style.color = 'red';
+            return false;
+        }
+    };
+
+// Validation pour la date de naissance (doit avoir au moins 18 ans)
+    const validateDateNaissanceInput = () => {
+        const dateNaissanceValue = dateNaissance.value;
+        if (isOlderThan18(dateNaissanceValue)) {
+            dateNaissance.style.color = '#02AFBC';
+            dateNaissance.style.fontSize = "16px";
+            return true;
+        } else {
+            dateNaissance.style.color = 'red';
+            return false;
+        }
+    };
+
+// Validation pour les revenus (ne doit pas dépasser 1 milliard)
+    const validateRevenusInput = () => {
+        const revenusValue = parseFloat(revenus.value.trim());
+        if (revenusValue > 1000 && revenusValue <= 1000000000) {
+            revenus.style.color = '#02AFBC';
+            revenus.style.fontSize = "16px";
+            return true;
+        } else {
+            revenus.style.color = 'red';
+            return false;
+        }
+    };
+
+// Gérer la validation lors du clic sur le bouton
+    buttonForm.addEventListener('click', function (e) {
+        let errorMessage = '';
+
+        if (!validateNomInput()) {
+            errorMessage += 'Veuillez saisir un nom valide (maximum 100 caractères).<br>';
+        }
+        if (!validatePrenomInput()) {
+            errorMessage += 'Veuillez saisir un prénom valide (maximum 100 caractères).<br>';
+        }
+        if (!validateCinInput()) {
+            errorMessage += 'Veuillez saisir un numéro CIN valide (maximum 12 caractères, alphanumérique).<br>';
+        }
+        if (!validateDateNaissanceInput()) {
+            errorMessage += 'Vous devez avoir au moins 18 ans.<br>';
+        }
+        if (!validateRevenusInput()) {
+            errorMessage += 'Le montant des revenus doit être compris entre 0 et 1 milliard.<br>';
+        }
+
+        if (errorMessage) {
+            e.preventDefault();  // Empêche l'envoi du formulaire si des erreurs sont présentes
+            showPopup(errorMessage);
+        }
+    });
+
+    function showPopup(message) {
+        popupMessage.innerHTML = message;
+        popup.style.display = 'flex';
+    }
+
+    document.getElementById('closePopup').addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     block1.addEventListener('click', () => {
 
 
-        // if(JSON.parse(localStorage.getItem('formData1'))){
-        //     alert("data trouver");
-        //     localStorage.removeItem('formData1');
-        //     alert("data removed");
-        // }
-
-        // container1.style.display = 'block';
-        // container2.style.display = 'none';
-        // container3.style.display = 'none';
-        //detailCredit.style.display = 'none';
-        // infosPersonnelles.style.display = 'none';
         block1.style.marginTop = '-10px';
         block3.style.marginTop = '0px';
         block1.style.color = '#292D5A';
@@ -92,11 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     block2.addEventListener('click', () => {
 
-        //container1.style.display = 'none';
-        //container2.style.display = 'block';
-        //container3.style.display = 'none';
-        //detailCredit.style.display = 'flex';
-        //infosPersonnelles.style.display = 'none';
+
 
         block2.style.marginTop = '-10px';
         block1.style.marginTop = '0px';
@@ -114,11 +230,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     block3.addEventListener('click', () => {
 
-        //   container1.style.display = 'none';
-        // container2.style.display = 'none';
-        //container3.style.display = 'block';
-        //detailCredit.style.display = 'flex';
-        //infosPersonnelles.style.display = 'flex';
 
         block3.style.marginTop = '-10px';
         block2.style.marginTop = '0px';
@@ -163,10 +274,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     buttonForm31.addEventListener('click', (e) => {
-        // e.preventDefault();
-        // if(JSON.parse(localStorage.getItem('formData3'))){
-        //     localStorage.removeItem('formData3');
-        // }
+
 
         const nomInput = document.getElementById('nom').value;
         const prenomInput = document.getElementById('prenom').value;
@@ -232,34 +340,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     });
-
-
-    function syncValue(inputId, rangeId) {
-        var input = document.getElementById(inputId);
-        var range = document.getElementById(rangeId);
-        input.value = range.value;
-    }
-
-    function updateMensualite() {
-        const montant = parseFloat(document.getElementById('amount').value);
-        const duree = parseInt(document.getElementById('duree').value);
-        const mensualite = calculateMensualite(montant, duree);
-        document.getElementById('mensualite').value = Math.round(mensualite);
-    }
-
-    function updateMontant() {
-        syncValue('amount', 'montantRange');
-        updateMensualite();
-    }
-
-    function updateDuree() {
-        syncValue('duree', 'dureeRange');
-    }
-
-    function calculateMensualite(montant, duree) {
-        const tauxInteret = 0.05;
-        const mensualite = (montant * tauxInteret / 12) / (1 - Math.pow(1 + tauxInteret / 12, -duree));
-        return mensualite;
-    }
 
 });
