@@ -47,6 +47,7 @@
 
 package org.example.credit.controller;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -62,7 +63,11 @@ import org.example.credit.service.impl.CreditDemandeServiceImpl;
 
 @WebServlet("/list")
 public class ListeDemandeServlet extends HttpServlet {
-    private final CreditDemandeService creditDemandeService = new CreditDemandeServiceImpl();
+
+    @Inject
+    private  CreditDemandeService creditDemandeService ;
+
+//    private final CreditDemandeService creditDemandeService = new CreditDemandeServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

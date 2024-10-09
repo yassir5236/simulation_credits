@@ -1,5 +1,6 @@
 package org.example.credit.controller;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,7 +14,10 @@ import java.io.IOException;
 
 @WebServlet("/detailDemande")
 public class DetailDemandeServlet extends HttpServlet {
-    private final CreditDemandeService creditDemandeService = new CreditDemandeServiceImpl();
+//    private final CreditDemandeService creditDemandeService = new CreditDemandeServiceImpl();
+    @Inject
+    private  CreditDemandeService creditDemandeService;
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String demandeIdString = request.getParameter("demandeId");

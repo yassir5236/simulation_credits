@@ -1,6 +1,7 @@
 package org.example.credit.service.impl;
 
 
+import jakarta.enterprise.context.ApplicationScoped;
 import org.example.credit.repository.dao.DemandeCreditDaoImpl;
 import org.example.credit.model.CreditDemande;
 import org.example.credit.repository.DemandeCreditRepository;
@@ -9,15 +10,20 @@ import org.example.credit.service.CreditDemandeService;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 
+@ApplicationScoped
 public class CreditDemandeServiceImpl implements CreditDemandeService {
 
-    private final DemandeCreditRepository demandeCreditRepository;
+    @Inject
+    private  DemandeCreditRepository demandeCreditRepository;
 
-    public CreditDemandeServiceImpl() {
-        this.demandeCreditRepository = new DemandeCreditDaoImpl();  // Injection par constructeur
-    }
+
+
+//    public CreditDemandeServiceImpl() {
+//        this.demandeCreditRepository = new DemandeCreditDaoImpl();
+//    }
 
     @Override
     public CreditDemande getDemandeById(Long id) {
@@ -44,10 +50,7 @@ public class CreditDemandeServiceImpl implements CreditDemandeService {
         demandeCreditRepository.delete(id);
     }
 
-//    @Override
-//    public List<CreditDemande> searchByEtat(String etat) {
-//        return demandeCreditRepository.findByEtat(etat);
-//    }
+
 
     @Override
     public List<CreditDemande> filterDemandes(LocalDate date, String etat) {

@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,8 +20,10 @@ import java.util.List;
 
 @WebServlet("/submitForm")
 public class SubmitFormServlet extends HttpServlet {
+    @Inject
+   private  CreditDemandeService creditDemandeService;
 
-    private final CreditDemandeService creditDemandeService = new CreditDemandeServiceImpl();
+   // private final CreditDemandeService creditDemandeService = new CreditDemandeServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();

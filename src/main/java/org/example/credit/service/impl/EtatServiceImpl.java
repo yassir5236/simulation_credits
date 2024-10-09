@@ -1,5 +1,6 @@
 package org.example.credit.service.impl;
-
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 import org.example.credit.model.CreditDemande;
 import org.example.credit.model.Etat;
@@ -10,14 +11,17 @@ import org.example.credit.repository.dao.EtatDaoImpl;
 import org.example.credit.service.CreditDemandeService;
 import org.example.credit.service.EtatService;
 
+import jakarta.enterprise.context.RequestScoped;
 import java.util.List;
 
+@ApplicationScoped
 public class EtatServiceImpl implements EtatService {
 
-    private final EtatRepository etatRepository;
+    @Inject
+    private  EtatRepository etatRepository;
 
     public EtatServiceImpl() {
-        this.etatRepository = new EtatDaoImpl();  // Injection par constructeur
+        this.etatRepository = new EtatDaoImpl();
     }
 
 

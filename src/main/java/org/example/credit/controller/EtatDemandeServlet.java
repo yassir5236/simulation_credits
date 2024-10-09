@@ -1,5 +1,6 @@
 package org.example.credit.controller;
 
+import jakarta.inject.Inject;
 import jakarta.servlet.annotation.WebServlet;
 
 
@@ -22,8 +23,15 @@ import java.time.LocalDate;
 
 @WebServlet("/changerEtatDemande")
 public class EtatDemandeServlet extends HttpServlet {
-    private final CreditDemandeService creditDemandeService = new CreditDemandeServiceImpl();
-    private final EtatService etatService = new EtatServiceImpl();
+    @Inject
+    private CreditDemandeService creditDemandeService;
+
+//    private final CreditDemandeService creditDemandeService =
+
+    @Inject
+    private EtatService etatService;
+
+//    private final EtatService etatService = new EtatServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String demandeIdString = request.getParameter("demandeId");

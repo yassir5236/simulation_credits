@@ -1,6 +1,7 @@
 package org.example.credit.repository.dao;
 
 
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.persistence.TypedQuery;
 import org.example.credit.model.CreditDemande;
 
@@ -13,7 +14,10 @@ import jakarta.persistence.EntityTransaction;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import jakarta.enterprise.context.ApplicationScoped;
 
+
+@ApplicationScoped
 public class DemandeCreditDaoImpl implements DemandeCreditRepository {
 
     @Override
@@ -80,47 +84,7 @@ public class DemandeCreditDaoImpl implements DemandeCreditRepository {
     }
 
 
-//    @Override
-//    public List<CreditDemande> findByDateAndEtat(LocalDate dateModife, String etat) {
-//        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-//        List<CreditDemande> result = new ArrayList<>();
-//
-//        try {
-//            // Construction de la requête JPQL pour filtrer par date de modification et état
-//            String queryStr = "SELECT d.creditDemande FROM CreditDemandeEtat d WHERE 1=1";
-//
-//            // Ajout de la condition de filtre par date de modification si présente
-//            if (dateModife != null) {
-//                queryStr += " AND d.dateModife = :dateModife";
-//            }
-//
-//            // Ajout de la condition de filtre par état si présent
-//            if (etat != null && !etat.isEmpty()) {
-//                queryStr += " AND d.etat.etat = :etat";
-//            }
-//
-//            // Création de la requête avec les conditions dynamiques
-//            TypedQuery<CreditDemande> query = em.createQuery(queryStr, CreditDemande.class);
-//
-//            // Ajout des paramètres dans la requête
-//            if (dateModife != null) {
-//                query.setParameter("dateModife", dateModife);
-//            }
-//
-//            if (etat != null && !etat.isEmpty()) {
-//                query.setParameter("etat", etat);
-//            }
-//
-//            // Exécution de la requête et récupération des résultats
-//            result = query.getResultList();
-//        } catch (Exception e) {
-//            e.printStackTrace();  // Gestion des exceptions
-//        } finally {
-//            em.close();  // Fermeture de l'EntityManager
-//        }
-//
-//        return result;  // Retourne la liste filtrée
-//    }
+
 
 
     @Override
