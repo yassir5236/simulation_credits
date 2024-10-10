@@ -2,6 +2,7 @@ package org.example.credit.service.impl;
 
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.EntityNotFoundException;
 import org.example.credit.repository.dao.DemandeCreditDaoImpl;
 import org.example.credit.model.CreditDemande;
 import org.example.credit.repository.DemandeCreditRepository;
@@ -25,9 +26,13 @@ public class CreditDemandeServiceImpl implements CreditDemandeService {
 //        this.demandeCreditRepository = new DemandeCreditDaoImpl();
 //    }
 
-    @Override
+//    @Override
+//    public CreditDemande getDemandeById(Long id) {
+//        return demandeCreditRepository.findById(id);
+//    }
+
     public CreditDemande getDemandeById(Long id) {
-        return demandeCreditRepository.findById(id);
+        return demandeCreditRepository.findById(id).orElse(null);
     }
 
     @Override

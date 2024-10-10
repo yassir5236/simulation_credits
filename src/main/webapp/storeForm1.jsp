@@ -28,7 +28,8 @@
         <div id="container1" class="container1">
 
 
-            <form id="form" class="simuler-mon-credit" action="${pageContext.request.contextPath}/storeForm1" method="post">
+            <form id="form" class="simuler-mon-credit" action="${pageContext.request.contextPath}/storeForm1"
+                  method="post">
                 <h3>Mon projet</h3>
                 <select class="mon_projet" id="project" name="project">
                     <option value="besoin_argent">J'ai besoin d'argent</option>
@@ -66,7 +67,8 @@
 
                 <div class="mensualite-group">
                     <label for="mensualite">Mensualités (en DH)</label><br>
-                    <input class="input3 " type="number" id="mensualite" name="mensualite" step="0.01"  value="1580" required><br>
+                    <input class="input3 " type="number" id="mensualite" name="mensualite" step="0.01" value="1580"
+                           required><br>
                     <input class="slider3" type="range" min="180" max="4000" value="1580" id="mensualiteRange"
                     >
                 </div>
@@ -107,7 +109,6 @@
         <div style="background-color: #F1F2F6; width: 100%; color:#30435c; font-size: 16px;padding:10px;">Mon projet
         </div>
         <p style="color: #02AFBC">Revolving</p>
-
 
 
         <div id="detait-mon-credit" class="detait-mon-credit" style="display: none">
