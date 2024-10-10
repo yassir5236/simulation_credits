@@ -14,26 +14,41 @@ import org.example.credit.utils.JpaUtil;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+//
+//@ApplicationScoped
+//public class EtatDaoImpl implements EtatRepository {
+//
+//
+//
+//    @Override
+//    public void save(Etat etat) {
+//        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+//        EntityTransaction transaction = em.getTransaction();
+//        try {
+//            transaction.begin();
+//            em.persist(etat);
+//            System.out.println("im in dao");
+//            transaction.commit();
+//        } catch (Exception e) {
+//            transaction.rollback();
+//        } finally {
+//            em.close();
+//        }
+//    }
+//
+//}
+
+
+
+
+
+
 
 @ApplicationScoped
-public class EtatDaoImpl implements EtatRepository {
+public  class  EtatDaoImpl extends GenericDaoImpl<Etat,Long> implements EtatRepository {
 
 
-
-    @Override
-    public void save(Etat etat) {
-        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        try {
-            transaction.begin();
-            em.persist(etat);
-            System.out.println("im in dao");
-            transaction.commit();
-        } catch (Exception e) {
-            transaction.rollback();
-        } finally {
-            em.close();
-        }
+    public EtatDaoImpl() {
+        super(Etat.class);
     }
-
 }
