@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Entity
 @Table(name = "credit_demande")
 public class CreditDemande {
@@ -80,10 +81,14 @@ public class CreditDemande {
     private Double revenus;
 
 
+    public CreditDemande(){
+
+    }
+
     @OneToMany(mappedBy = "creditDemande", cascade = CascadeType.ALL)
     private Set<CreditDemandeEtat> creditDemandeEtats = new HashSet<>();
 
-    // Getters et setters
+
     public Set<CreditDemandeEtat> getCreditDemandeEtats() {
         return creditDemandeEtats;
     }
@@ -92,8 +97,7 @@ public class CreditDemande {
         this.creditDemandeEtats = creditDemandeEtats;
     }
 
-    public CreditDemande() {
-    }
+
 
 
     public String getCivilite() {

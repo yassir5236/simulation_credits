@@ -25,13 +25,13 @@ import java.time.LocalDate;
 public class EtatDemandeServlet extends HttpServlet {
     @Inject
     private CreditDemandeService creditDemandeService;
-
-//    private final CreditDemandeService creditDemandeService =
-
+    @Inject
+    private CreditDemandeEtat creditDemandeEtat;
     @Inject
     private EtatService etatService;
+    @Inject
+    private Etat etat;
 
-//    private final EtatService etatService = new EtatServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String demandeIdString = request.getParameter("demandeId");
@@ -46,28 +46,20 @@ public class EtatDemandeServlet extends HttpServlet {
             return;
         }
 
-        // Créer un nouvel état et l'associer à la demande de crédit
-        Etat etat = new Etat();
         etat.setEtat(nouvelEtat);
-
         etatService.createEtat(etat);
 
 
-        // Créer un CreditDemandeEtat pour suivre l'état de la demande
-        CreditDemandeEtat creditDemandeEtat = new CreditDemandeEtat();
         creditDemandeEtat.setEtat(etat);
         creditDemandeEtat.setDescription(justif);
         creditDemandeEtat.setDateModife(LocalDate.now());
         creditDemandeEtat.setCreditDemande(demande);
 
-        // Ajouter le nouvel état à la collection d'états de la demande de crédit
         demande.getCreditDemandeEtats().add(creditDemandeEtat);
 
-        // Mettre à jour la demande et persister les modifications
         creditDemandeService.updateDemande(demande);
         request.getSession().setAttribute("successMessage", "L'état de la demande a été modifié avec succès.");
 
-        // Rediriger après la mise à jour
         response.sendRedirect(request.getContextPath() + "/submitForm");
     }
 }

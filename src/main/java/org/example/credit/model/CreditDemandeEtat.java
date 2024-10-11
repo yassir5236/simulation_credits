@@ -26,7 +26,10 @@ public class CreditDemandeEtat {
     @Column(nullable = false)
     private String description;
 
-    // Getters et setters
+    public CreditDemandeEtat() {
+
+    }
+
     public Long getId() {
         return id;
     }

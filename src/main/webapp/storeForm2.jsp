@@ -14,8 +14,23 @@
 </head>
 <body>
 <h1>Demander mon crédit en ligne</h1>
-<div class="contenaire-global">
 
+<%
+    // Récupérer le message flash depuis la session
+    String flashMessage = (String) session.getAttribute("flashMessage");
+
+    // Afficher le message et ensuite l'enlever de la session
+    if (flashMessage != null) {
+%>
+<div class="flash-message">
+    <p><%= flashMessage %></p>
+</div>
+<%
+        // Supprimer le message de la session pour qu'il ne s'affiche qu'une seule fois
+        session.removeAttribute("flashMessage");
+    }
+%>
+<div class="contenaire-global">
 
 
 

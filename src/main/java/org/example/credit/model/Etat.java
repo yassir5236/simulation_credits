@@ -88,7 +88,10 @@ public class Etat {
     @OneToMany(mappedBy = "etat", cascade = CascadeType.ALL)
     private Set<CreditDemandeEtat> creditDemandeEtats = new HashSet<>();
 
-    // Getters et setters
+    public Etat() {
+
+    }
+
     public Set<CreditDemandeEtat> getCreditDemandeEtats() {
         return creditDemandeEtats;
     }

@@ -1,4 +1,6 @@
 package org.example.credit.controller;
+
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -27,22 +29,25 @@ import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 
 
-
 @WebServlet("/submitForm")
 public class SubmitFormServlet extends HttpServlet {
-    @Inject
-   private  CreditDemandeService creditDemandeService;
 
-   // private final CreditDemandeService creditDemandeService = new CreditDemandeServiceImpl();
+
+    @Inject
+    private CreditDemandeService creditDemandeService;
+    @Inject
+    private CreditDemande creditDemande;
+
+    // private final CreditDemandeService creditDemandeService = new CreditDemandeServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
         String project = (String) session.getAttribute("project");
         String profession = (String) session.getAttribute("profession");
-        String montantStr = (String) session.getAttribute("montant");
-        String dureeStr = (String) session.getAttribute("duree");
-        String mensualite =(String) session.getAttribute("mensualite");
+        Double montant = (Double) session.getAttribute("montant");
+        int duree = (int) session.getAttribute("duree");
+        Double mensualiteFinal =  (Double) session.getAttribute("mensualite");
 
 
         String email = (String) session.getAttribute("email");
@@ -56,12 +61,16 @@ public class SubmitFormServlet extends HttpServlet {
         String revenusStr = request.getParameter("revenus");
 
 
-
-
-        double montant = Double.parseDouble(montantStr);
-        int duree = Integer.parseInt(dureeStr);
+//        double montant = Double.parseDouble(montantStr);
+//        int duree = Integer.parseInt(dureeStr);
         double revenus = Double.parseDouble(revenusStr);
-        double mensualiteFinal = Double.parseDouble(mensualite);
+//        double mensualiteFinal = Double.parseDouble(mensualiteFinalStr);
+
+
+
+
+
+
 
         LocalDate dateNaissance = LocalDate.parse(dateNaissanceStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         if (LocalDate.now().getYear() - dateNaissance.getYear() < 18) {
@@ -71,22 +80,20 @@ public class SubmitFormServlet extends HttpServlet {
         }
 
 
-        CreditDemande demande = new CreditDemande();
-        demande.setProjet(project);
-        demande.setMontant(montant);
-        demande.setDuree(duree);
-        demande.setNom(nom);
-        demande.setPrenom(prenom);
-        demande.setEmail(email);
-        demande.setTelephone(telephone);
-        demande.setCivilite(civilite);
-        demande.setCin(cin);
+        creditDemande.setProjet(project);
+        creditDemande.setMontant(montant);
+        creditDemande.setDuree(duree);
+        creditDemande.setNom(nom);
+        creditDemande.setPrenom(prenom);
+        creditDemande.setEmail(email);
+        creditDemande.setTelephone(telephone);
+        creditDemande.setCivilite(civilite);
+        creditDemande.setCin(cin);
 
-        demande.setDateNaissance(dateNaissance);
-        demande.setRevenus(revenus);
-        demande.setProfession(profession);
-        demande.setMensualite(mensualiteFinal);
-
+        creditDemande.setDateNaissance(dateNaissance);
+        creditDemande.setRevenus(revenus);
+        creditDemande.setProfession(profession);
+        creditDemande.setMensualite(mensualiteFinal);
 
 
         System.out.println("### Données prêtes pour l'insertion dans la base de données ###");
@@ -101,27 +108,25 @@ public class SubmitFormServlet extends HttpServlet {
         System.out.println("Date de naissance : " + dateNaissance);
         System.out.println("Revenus : " + revenus);
         System.out.println("Profession : " + profession);
-        System.out.println("Mensualité : " + mensualiteFinal);
-
+        System.out.println("Mensualité final : " + mensualiteFinal);
 
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
-        Set<ConstraintViolation<CreditDemande>> violations = validator.validate(demande);
+        Set<ConstraintViolation<CreditDemande>> violations = validator.validate(creditDemande);
 
 
         if (!violations.isEmpty()) {
             request.setAttribute("violations", violations);
             request.getRequestDispatcher("/views/error.jsp").forward(request, response);
         } else {
-            creditDemandeService.createDemande(demande);
+            creditDemandeService.createDemande(creditDemande);
             response.sendRedirect(request.getContextPath() + "/list");
         }
 
 
 
     }
-
 
 
     @Override
@@ -137,5 +142,8 @@ public class SubmitFormServlet extends HttpServlet {
 
         req.getRequestDispatcher("listeDemande2.jsp").forward(req, resp);
     }
+
+
+
 
 }

@@ -11,72 +11,62 @@ import java.io.IOException;
 
 @WebServlet("/storeForm1")
 public class Form1Servlet extends HttpServlet {
+
+    private static final double TAUX_ANNUEL = 0.12;
+
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
         String project = request.getParameter("project");
         String profession = request.getParameter("profession");
-        String montant = request.getParameter("montant");
-        String duree = request.getParameter("duree");
-        String mensualite = request.getParameter("mensualite");
+        String montantStr = request.getParameter("montant");
+        String dureeStr = request.getParameter("duree");
+        String mensualiteStr = request.getParameter("mensualite");
 
-//        StringBuilder errorMessage = new StringBuilder();
-//
-//        if (project == null || project.trim().isEmpty()) {
-//            errorMessage.append("Le projet est obligatoire. ");
-//        }
-//
-//        if (profession == null || profession.trim().isEmpty()) {
-//            errorMessage.append("La profession est obligatoire. ");
-//        }
-//
-//        try {
-//            double montantValue = Double.parseDouble(montant);
-//            if (montantValue <= 0) {
-//                errorMessage.append("Le montant doit être supérieur à 0. ");
-//            }
-//        } catch (NumberFormatException e) {
-//            errorMessage.append("Le montant doit être un nombre valide. ");
-//        }
-//
-//        // Validation du champ 'duree'
-//        try {
-//            int dureeValue = Integer.parseInt(duree);
-//            if (dureeValue <= 0) {
-//                errorMessage.append("La durée doit être supérieure à 0. ");
-//            }
-//        } catch (NumberFormatException e) {
-//            errorMessage.append("La durée doit être un nombre valide. ");
-//        }
-//
-//        try {
-//            double mensualiteValue = Double.parseDouble(mensualite);
-//            if (mensualiteValue <= 0) {
-//                errorMessage.append("La mensualité doit être supérieure à 0. ");
-//            }
-//        } catch (NumberFormatException e) {
-//            errorMessage.append("La mensualité doit être un nombre valide. ");
-//        }
-//
-//        if (errorMessage.length() > 0) {
-//            request.setAttribute("errorMessage", errorMessage.toString());
-//            request.getRequestDispatcher("storeForm1.jsp").forward(request, response);
-//            return;
-//        }
+
+        double montant = Double.parseDouble(montantStr);
+        int duree = Integer.parseInt(dureeStr);
+        double mensualiteReceive = Double.parseDouble(mensualiteStr);
+
+
+        double mensualiteCalculee = calculerMensualite(montant, duree, TAUX_ANNUEL);
+        System.out.println("voila mensialite mensualiteReceive "+mensualiteReceive);
+        System.out.println("voila mensialite mensualiteCalculee "+mensualiteCalculee);
+
+
+        if (Math.abs(mensualiteReceive - mensualiteCalculee) > 0.01) {
+            session.setAttribute("flashMessage", "La mensualité calculée est différente de la mensualité finale. Mensualité calculée : " + mensualiteCalculee);
+        } else {
+            session.setAttribute("flashMessage", "La mensualité est correcte. Mensualité enregistrée : " + mensualiteCalculee);
+        }
+
+        System.out.println("voila mensualiteReceive : " + mensualiteReceive);
+        System.out.println("voila mensualiteCalculee : " + mensualiteCalculee);
+
 
         session.setAttribute("project", project);
         session.setAttribute("profession", profession);
         session.setAttribute("montant", montant);
         session.setAttribute("duree", duree);
-        session.setAttribute("mensualite", mensualite);
+        session.setAttribute("mensualite", mensualiteCalculee);
 
-        System.out.println(project);
-        System.out.println(profession);
-        System.out.println(montant);
-        System.out.println(duree);
-        System.out.println(mensualite);
+
         System.out.println("donne1");
 
         response.sendRedirect("storeForm2.jsp");
+    }
+
+
+//    private double calculerMensualite(double capital, int dureeEnMois, double tauxAnnuel) {
+//        double tauxMensuel = tauxAnnuel / 12;
+//        return (capital * tauxMensuel) / (1 - Math.pow(1 + tauxMensuel, -dureeEnMois));
+//    }
+
+
+    private double calculerMensualite(double capital, int dureeEnMois, double tauxAnnuel) {
+        double tauxMensuel = tauxAnnuel / 12;
+        double mensualite = (capital * tauxMensuel) / (1 - Math.pow(1 + tauxMensuel, -dureeEnMois));
+        return Math.round(mensualite * 100.0) / 100.0;
     }
 }
