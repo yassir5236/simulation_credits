@@ -322,3 +322,35 @@ input[type=range]::-webkit-slider-thumb {
 .closePopup:hover {
     background-color: #029C9B; /* Couleur de fond au survol */
 }
+
+
+
+
+.flash-message {
+    background-color:#02AFBC ;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    position: fixed;
+    top: 30px;
+    left: 100%; /* Start off-screen (right) */
+    transform: translateX(0);
+    z-index: 1000;
+    opacity: 1;
+    transition: transform 0.6s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.4s ease-out;
+}
+
+.flash-message.show {
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+.flash-message.hide {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.8s ease-in, opacity 0.4s ease-out;
+}

@@ -157,4 +157,19 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     };
+
+
+    const flashMessage = document.querySelector(".flash-message");
+
+
+    if (flashMessage) {
+        flashMessage.classList.add("show"); // Slide in from right to center
+
+        setTimeout(() => {
+            flashMessage.classList.remove("show");
+            flashMessage.classList.add("hide"); // Slide out from center to right
+        }, 4000);
+    }
+
+
 });
