@@ -54,7 +54,7 @@
                         <input type="text" id="prenom" name="prenom" placeholder="Prénom*" required>
                         <input type="text" id="cin" name="cin" placeholder="Numéro CIN / Carte de séjour*" required>
                         <input type="date" id="date_naissance" name="date_naissance"
-                               placeholder="Date de naissance JJ/MM/YYYY*" required>
+                               placeholder="Date de naissance YYYY/MM/JJ*" required>
                         <input type="number" id="revenus" name="revenus"
                                placeholder="Total revenus mensuels (net en DH)*" required>
 

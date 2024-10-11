@@ -23,25 +23,28 @@ public class CreditDemande {
 
 
     @Column(nullable = false)
-    @DecimalMin(value = "0.0", inclusive = false, message = "Le montant doit être positif.")
+    @Min(1000)
+    @Max(10000000)
     private Double montant;
 
     @Column(nullable = false)
-    @Min(value = 1, message = "La durée doit être d'au moins 1 mois.")
+    @Min(6)
+    @Max(300)
     private int duree;
 
 
     @Column(nullable = false)
-    @DecimalMin(value = "0.0", inclusive = false, message = "Le montant de la mensualité doit être positif.")
     private Double mensualite;
 
 
     @Column(nullable = false)
     @NotEmpty(message = "Le nom ne peut pas être vide.")
+    @Size(min = 2, max = 50)
     private String nom;
 
     @Column(nullable = false)
     @NotEmpty(message = "Le prénom ne peut pas être vide.")
+    @Size(min = 2, max = 50)
     private String prenom;
 
 
@@ -64,6 +67,7 @@ public class CreditDemande {
 
     @Column(nullable = false)
     @NotEmpty(message = "Le CIN ne peut pas être vide.")
+    @Pattern(regexp = "[A-Z]{1,2}\\d+", message = "Le CIN doit commencer par une ou deux lettres suivies de chiffres.")
     private String cin;
 
     @Column(nullable = false)
@@ -72,6 +76,7 @@ public class CreditDemande {
 
     @Column(nullable = false)
     @DecimalMin(value = "0.0", inclusive = false, message = "Le revenu doit être positif.")
+    @Min(10000)
     private Double revenus;
 
 

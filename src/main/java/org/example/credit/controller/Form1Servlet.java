@@ -20,49 +20,49 @@ public class Form1Servlet extends HttpServlet {
         String duree = request.getParameter("duree");
         String mensualite = request.getParameter("mensualite");
 
-        StringBuilder errorMessage = new StringBuilder();
-
-        if (project == null || project.trim().isEmpty()) {
-            errorMessage.append("Le projet est obligatoire. ");
-        }
-
-        if (profession == null || profession.trim().isEmpty()) {
-            errorMessage.append("La profession est obligatoire. ");
-        }
-
-        try {
-            double montantValue = Double.parseDouble(montant);
-            if (montantValue <= 0) {
-                errorMessage.append("Le montant doit être supérieur à 0. ");
-            }
-        } catch (NumberFormatException e) {
-            errorMessage.append("Le montant doit être un nombre valide. ");
-        }
-
-        // Validation du champ 'duree'
-        try {
-            int dureeValue = Integer.parseInt(duree);
-            if (dureeValue <= 0) {
-                errorMessage.append("La durée doit être supérieure à 0. ");
-            }
-        } catch (NumberFormatException e) {
-            errorMessage.append("La durée doit être un nombre valide. ");
-        }
-
-        try {
-            double mensualiteValue = Double.parseDouble(mensualite);
-            if (mensualiteValue <= 0) {
-                errorMessage.append("La mensualité doit être supérieure à 0. ");
-            }
-        } catch (NumberFormatException e) {
-            errorMessage.append("La mensualité doit être un nombre valide. ");
-        }
-
-        if (errorMessage.length() > 0) {
-            request.setAttribute("errorMessage", errorMessage.toString());
-            request.getRequestDispatcher("storeForm1.jsp").forward(request, response);
-            return;
-        }
+//        StringBuilder errorMessage = new StringBuilder();
+//
+//        if (project == null || project.trim().isEmpty()) {
+//            errorMessage.append("Le projet est obligatoire. ");
+//        }
+//
+//        if (profession == null || profession.trim().isEmpty()) {
+//            errorMessage.append("La profession est obligatoire. ");
+//        }
+//
+//        try {
+//            double montantValue = Double.parseDouble(montant);
+//            if (montantValue <= 0) {
+//                errorMessage.append("Le montant doit être supérieur à 0. ");
+//            }
+//        } catch (NumberFormatException e) {
+//            errorMessage.append("Le montant doit être un nombre valide. ");
+//        }
+//
+//        // Validation du champ 'duree'
+//        try {
+//            int dureeValue = Integer.parseInt(duree);
+//            if (dureeValue <= 0) {
+//                errorMessage.append("La durée doit être supérieure à 0. ");
+//            }
+//        } catch (NumberFormatException e) {
+//            errorMessage.append("La durée doit être un nombre valide. ");
+//        }
+//
+//        try {
+//            double mensualiteValue = Double.parseDouble(mensualite);
+//            if (mensualiteValue <= 0) {
+//                errorMessage.append("La mensualité doit être supérieure à 0. ");
+//            }
+//        } catch (NumberFormatException e) {
+//            errorMessage.append("La mensualité doit être un nombre valide. ");
+//        }
+//
+//        if (errorMessage.length() > 0) {
+//            request.setAttribute("errorMessage", errorMessage.toString());
+//            request.getRequestDispatcher("storeForm1.jsp").forward(request, response);
+//            return;
+//        }
 
         session.setAttribute("project", project);
         session.setAttribute("profession", profession);

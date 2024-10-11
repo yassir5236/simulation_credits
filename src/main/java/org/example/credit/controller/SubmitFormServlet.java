@@ -10,13 +10,23 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import org.example.credit.model.CreditDemande;
-//import org.example.credit.model.Enum.Etat;
 import org.example.credit.service.CreditDemandeService;
-import org.example.credit.service.impl.CreditDemandeServiceImpl;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
+
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
+
+
 
 @WebServlet("/submitForm")
 public class SubmitFormServlet extends HttpServlet {
@@ -47,13 +57,6 @@ public class SubmitFormServlet extends HttpServlet {
 
 
 
-
-        // Validation des champs
-        if (montantStr == null || dureeStr == null || revenusStr == null || nom == null || prenom == null || dateNaissanceStr == null) {
-            request.setAttribute("error", "Tous les champs doivent être remplis.");
-            request.getRequestDispatcher("/views/error.jsp").forward(request, response);
-            return;
-        }
 
         double montant = Double.parseDouble(montantStr);
         int duree = Integer.parseInt(dureeStr);
@@ -100,12 +103,21 @@ public class SubmitFormServlet extends HttpServlet {
         System.out.println("Profession : " + profession);
         System.out.println("Mensualité : " + mensualiteFinal);
 
-        creditDemandeService.createDemande(demande);
-        System.out.println("done3");
 
-//        response.sendRedirect("listeDemande2.jsp");
 
-        response.sendRedirect(request.getContextPath() + "/list");
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        Set<ConstraintViolation<CreditDemande>> violations = validator.validate(demande);
+
+
+        if (!violations.isEmpty()) {
+            request.setAttribute("violations", violations);
+            request.getRequestDispatcher("/views/error.jsp").forward(request, response);
+        } else {
+            creditDemandeService.createDemande(demande);
+            response.sendRedirect(request.getContextPath() + "/list");
+        }
+
 
 
     }

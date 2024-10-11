@@ -107,22 +107,5 @@ public class ListeDemandeServlet extends HttpServlet {
         req.getRequestDispatcher("listeDemande2.jsp").forward(req, resp);
     }
 
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String dateStr = req.getParameter("date");
-//        String etat = req.getParameter("etat");
-//        LocalDate date = null;
-//        if (dateStr != null && !dateStr.isEmpty()) {
-//            date = LocalDate.parse(dateStr); // Vérifiez que le format est correct
-//        }
-//        System.out.println(date);
-//
-//        List<CreditDemande> demandes = creditDemandeService.filterDemandes(date, etat);
-//        if (demandes.isEmpty()) {
-//            req.setAttribute("message", "Aucune demande de crédit trouvée.");
-//        } else {
-//            req.setAttribute("demandes", demandes);
-//        }
-//
-//        req.getRequestDispatcher("listeDemande2.jsp").forward(req, resp);
-//    }
+
 }
