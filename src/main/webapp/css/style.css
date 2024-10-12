@@ -273,7 +273,6 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 
-/* Style du popup d'arrière-plan */
 .popup {
     display: none;
     position: fixed;
