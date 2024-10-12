@@ -265,7 +265,6 @@ input[type=range]::-webkit-slider-thumb {
     border-radius: 50%;
 }
 
-/*# sourceMappingURL=style.css.map */
 
 .input-radio-civilite {
     display: flex;
@@ -282,48 +281,43 @@ input[type=range]::-webkit-slider-thumb {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1000;
-    display: flex; /* Ajoutez flex pour centrer le contenu */
-    justify-content: center; /* Centre le contenu horizontalement */
-    align-items: center; /* Centre le contenu verticalement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Style du contenu du popup */
+
 .popup-content {
     background-color: white;
     padding: 20px;
-    border-radius: 10px; /* Arrondi des coins */
+    border-radius: 10px;
     width: 300px;
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombre douce autour du popup */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Style du message dans le popup */
 .popupMessage {
     margin: 0;
     font-size: 16px;
-    color: #292D5A; /* Couleur de texte */
+    color: #292D5A;
 }
 
-/* Style du bouton de fermeture */
 .closePopup {
-    margin-top: 15px; /* Espacement au-dessus du bouton */
-    padding: 10px 15px; /* Espacement intérieur du bouton */
+    margin-top: 15px;
+    padding: 10px 15px;
     border: none;
-    border-radius: 5px; /* Arrondi des coins */
-    background-color: #02AFBC; /* Couleur de fond */
-    color: white; /* Couleur du texte */
+    border-radius: 5px;
+    background-color: #02AFBC;
+    color: white;
     font-size: 16px;
-    cursor: pointer; /* Changement de curseur pour indiquer l'interaction */
-    transition: background-color 0.3s ease; /* Effet de transition */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Effet au survol du bouton */
+
 .closePopup:hover {
-    background-color: #029C9B; /* Couleur de fond au survol */
+    background-color: #029C9B;
 }
-
-
-
 
 .flash-message {
     background-color:#02AFBC ;
@@ -342,14 +336,15 @@ input[type=range]::-webkit-slider-thumb {
     opacity: 1;
     transition: transform 0.6s cubic-bezier(0.42, 0, 0.58, 1), opacity 0.4s ease-out;
 }
-
 .flash-message.show {
     transform: translateX(-50%);
     left: 50%;
 }
-
 .flash-message.hide {
     transform: translateX(100%);
     opacity: 0;
     transition: transform 0.8s ease-in, opacity 0.4s ease-out;
 }
+
+
+

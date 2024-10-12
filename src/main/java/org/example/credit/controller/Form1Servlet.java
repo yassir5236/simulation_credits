@@ -36,9 +36,9 @@ public class Form1Servlet extends HttpServlet {
 
 
         if (Math.abs(mensualiteReceive - mensualiteCalculee) > 0.01) {
-            session.setAttribute("flashMessage", "La mensualité calculée est différente de la mensualité finale. Mensualité calculée : " + mensualiteCalculee);
+            session.setAttribute("flashMessage", "La mensualité calculée est différente de la mensualité choisie. Mensualité enregistrer : " + mensualiteCalculee);
         } else {
-            session.setAttribute("flashMessage", "La mensualité est correcte. Mensualité enregistrée : " + mensualiteCalculee);
+            session.setAttribute("flashMessage", "La Mensualité enregistrée : " + mensualiteCalculee);
         }
 
         System.out.println("voila mensualiteReceive : " + mensualiteReceive);

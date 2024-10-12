@@ -3,6 +3,7 @@ package org.example.credit.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "etat_demande")
@@ -21,7 +22,8 @@ public class CreditDemandeEtat {
     private Etat etat;
 
     @Column(nullable = false)
-    private LocalDate dateModife;
+//    private LocalDate dateModife;
+    private LocalDateTime dateModife;
 
     @Column(nullable = false)
     private String description;
@@ -54,11 +56,11 @@ public class CreditDemandeEtat {
         this.etat = etat;
     }
 
-    public LocalDate getDateModife() {
+    public LocalDateTime getDateModife() {
         return dateModife;
     }
 
-    public void setDateModife(LocalDate dateModife) {
+    public void setDateModife(LocalDateTime dateModife) {
         this.dateModife = dateModife;
     }
 

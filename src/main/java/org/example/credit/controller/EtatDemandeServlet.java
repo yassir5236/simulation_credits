@@ -20,17 +20,18 @@ import org.example.credit.service.impl.EtatServiceImpl;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @WebServlet("/changerEtatDemande")
 public class EtatDemandeServlet extends HttpServlet {
     @Inject
     private CreditDemandeService creditDemandeService;
-    @Inject
-    private CreditDemandeEtat creditDemandeEtat;
+//    @Inject
+//    private CreditDemandeEtat creditDemandeEtat;
     @Inject
     private EtatService etatService;
-    @Inject
-    private Etat etat;
+//    @Inject
+//    private Etat etat;
 
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,14 +46,19 @@ public class EtatDemandeServlet extends HttpServlet {
             request.getRequestDispatcher("/views/error.jsp").forward(request, response);
             return;
         }
+        System.out.println("nouvel etat :" +nouvelEtat);
 
+        Etat etat = new Etat();
         etat.setEtat(nouvelEtat);
         etatService.createEtat(etat);
 
 
+
+
+CreditDemandeEtat creditDemandeEtat = new CreditDemandeEtat();
         creditDemandeEtat.setEtat(etat);
         creditDemandeEtat.setDescription(justif);
-        creditDemandeEtat.setDateModife(LocalDate.now());
+        creditDemandeEtat.setDateModife(LocalDateTime.now());
         creditDemandeEtat.setCreditDemande(demande);
 
         demande.getCreditDemandeEtats().add(creditDemandeEtat);
@@ -60,7 +66,9 @@ public class EtatDemandeServlet extends HttpServlet {
         creditDemandeService.updateDemande(demande);
         request.getSession().setAttribute("successMessage", "L'état de la demande a été modifié avec succès.");
 
-        response.sendRedirect(request.getContextPath() + "/submitForm");
+//        response.sendRedirect(request.getContextPath() + "/submitForm");
+        response.sendRedirect(request.getContextPath() + "/list");
+
     }
 }
 

@@ -35,6 +35,7 @@ public abstract class GenericDaoImpl<T, ID> implements GenericRepository<T, ID> 
     @Override
     public List<T> findAll() {
         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+//        em.clear();
         return em.createQuery("SELECT d FROM " + entityName + " d", entityClass).getResultList();
     }
 
@@ -45,8 +46,8 @@ public abstract class GenericDaoImpl<T, ID> implements GenericRepository<T, ID> 
         try {
             transaction.begin();
             em.persist(demande);
-            System.out.println("im in dao");
             transaction.commit();
+            System.out.println("Etat created");
         } catch (Exception e) {
             transaction.rollback();
         } finally {
@@ -57,6 +58,7 @@ public abstract class GenericDaoImpl<T, ID> implements GenericRepository<T, ID> 
     @Override
     public void update(T demande) {
         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+        em.clear();
         EntityTransaction transaction = em.getTransaction();
         try {
             System.out.println(demande);

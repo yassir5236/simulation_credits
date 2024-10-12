@@ -7,10 +7,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.example.credit.model.CreditDemande;
+import org.example.credit.model.CreditDemandeEtat;
 import org.example.credit.service.CreditDemandeService;
 import org.example.credit.service.impl.CreditDemandeServiceImpl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 @WebServlet("/detailDemande")
 public class DetailDemandeServlet extends HttpServlet {
@@ -35,9 +39,11 @@ public class DetailDemandeServlet extends HttpServlet {
             request.getRequestDispatcher("/views/error.jsp").forward(request, response);
             return;
         }
+        List<CreditDemandeEtat> etats = new ArrayList<>(demande.getCreditDemandeEtats());
+        etats.sort(Comparator.comparing(CreditDemandeEtat::getDateModife));
 
-        // Récupérer l'historique des états de la demande et le passer à la JSP
         request.setAttribute("demande", demande);
+        request.setAttribute("etatsTries", etats);
         request.getRequestDispatcher("detailDemande.jsp").forward(request, response);
     }
 }

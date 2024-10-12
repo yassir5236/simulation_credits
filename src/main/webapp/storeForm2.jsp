@@ -16,10 +16,8 @@
 <h1>Demander mon crédit en ligne</h1>
 
 <%
-    // Récupérer le message flash depuis la session
     String flashMessage = (String) session.getAttribute("flashMessage");
 
-    // Afficher le message et ensuite l'enlever de la session
     if (flashMessage != null) {
 %>
 <div class="flash-message">
