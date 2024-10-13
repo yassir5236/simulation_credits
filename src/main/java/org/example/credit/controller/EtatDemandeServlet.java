@@ -58,7 +58,7 @@ public class EtatDemandeServlet extends HttpServlet {
 CreditDemandeEtat creditDemandeEtat = new CreditDemandeEtat();
         creditDemandeEtat.setEtat(etat);
         creditDemandeEtat.setDescription(justif);
-        creditDemandeEtat.setDateModife(LocalDateTime.now());
+        creditDemandeEtat.setDateModife(LocalDate.now());
         creditDemandeEtat.setCreditDemande(demande);
 
         demande.getCreditDemandeEtats().add(creditDemandeEtat);

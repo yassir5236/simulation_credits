@@ -134,11 +134,10 @@ public class DemandeCreditDaoImpl extends GenericDaoImpl<CreditDemande, Long> im
     public List<CreditDemande> rechercherDemandeCredit(LocalDate dateModife, String etat) {
         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 
-        // Construction de la requête JPQL avec jointures et filtres conditionnels
         String jpql = "SELECT cd FROM CreditDemande cd " +
                 "LEFT JOIN cd.creditDemandeEtats cde " +
                 "LEFT JOIN cde.etat e " +
-                "WHERE 1=1 "; // Cette condition 1=1 est utilisée pour faciliter l'ajout dynamique de filtres
+                "WHERE 1=1 ";
 
         if (dateModife != null) {
             jpql += "AND cde.dateModife = :dateModife ";
@@ -150,7 +149,6 @@ public class DemandeCreditDaoImpl extends GenericDaoImpl<CreditDemande, Long> im
 
         TypedQuery<CreditDemande> query = em.createQuery(jpql, CreditDemande.class);
 
-        // Définir les paramètres de la requête si les filtres sont appliqués
         if (dateModife != null) {
             query.setParameter("dateModife", dateModife);
         }
@@ -159,7 +157,6 @@ public class DemandeCreditDaoImpl extends GenericDaoImpl<CreditDemande, Long> im
             query.setParameter("etat", etat);
         }
 
-        // Renvoyer la liste des résultats
         return query.getResultList();
     }
 }

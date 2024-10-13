@@ -24,15 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const alertBox = document.getElementById('success-alert');
 
         if (alertBox) {
-            // Show the alert after page loads
             setTimeout(() => {
                 alertBox.classList.add('show-alert');
-            }, 100); // Delay to make sure everything is loaded before showing
+            }, 100);
 
-            // Automatically hide the alert after 5 seconds
+
             setTimeout(() => {
                 alertBox.classList.remove('show-alert');
-            }, 5000); // Adjust the timing if needed
+            }, 5000);
         }
     };
 

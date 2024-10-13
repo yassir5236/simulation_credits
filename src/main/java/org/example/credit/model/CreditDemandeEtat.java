@@ -23,7 +23,7 @@ public class CreditDemandeEtat {
 
     @Column(nullable = false)
 //    private LocalDate dateModife;
-    private LocalDateTime dateModife;
+    private LocalDate dateModife;
 
     @Column(nullable = false)
     private String description;
@@ -56,11 +56,11 @@ public class CreditDemandeEtat {
         this.etat = etat;
     }
 
-    public LocalDateTime getDateModife() {
+    public LocalDate getDateModife() {
         return dateModife;
     }
 
-    public void setDateModife(LocalDateTime dateModife) {
+    public void setDateModife(LocalDate dateModife) {
         this.dateModife = dateModife;
     }
 

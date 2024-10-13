@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
     <title>Document</title>
@@ -17,14 +18,20 @@
 
 <%
     String flashMessage = (String) session.getAttribute("flashMessage");
-
     if (flashMessage != null) {
 %>
 <div class="flash-message">
-    <p><%= flashMessage %></p>
+    <div class="icon">
+        <i class="fas fa-check"></i>
+    </div>
+    <div class="message">
+        <span class="text text-1">Succès</span>
+        <span class="text text-2"><%= flashMessage %></span>
+    </div>
+    <i class="fa-solid fa-xmark close"></i> <!-- Bouton de fermeture -->
+    <div class="progress"></div> <!-- Barre de progression -->
 </div>
 <%
-        // Supprimer le message de la session pour qu'il ne s'affiche qu'une seule fois
         session.removeAttribute("flashMessage");
     }
 %>

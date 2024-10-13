@@ -60,7 +60,7 @@ public class CreditDemandeServiceImpl implements CreditDemandeService {
     @Override
     public List<CreditDemande> filterDemandes(LocalDate date, String etat) {
         System.out.println("Filtrer avec date: " + date + " et état: " + etat);
-        return demandeCreditRepository.rechercherDemandeCredit(date, etat);  // Appel à la méthode DAO
+        return demandeCreditRepository.rechercherDemandeCredit(date, etat);
     }
 
 

@@ -173,146 +173,158 @@
 
 
 
-/* Style global pour le corps */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
-  margin: 0;
-  padding: 20px;
-}
+/*!* Style global pour le corps *!*/
+/*body {*/
+/*  font-family: Arial, sans-serif;*/
+/*  background-color: #f4f4f9;*/
+/*  color: #333;*/
+/*  margin: 0;*/
+/*  padding: 20px;*/
+/*}*/
 
-/* Titre principal de la page */
-h2 {
-  font-size: 28px;
-  font-weight: bold;
-  color: #4a90e2;
-  text-align: center;
-  margin-bottom: 20px;
-}
+/*!* Titre principal de la page *!*/
+/*h2 {*/
+/*  font-size: 28px;*/
+/*  font-weight: bold;*/
+/*  color: #4a90e2;*/
+/*  text-align: center;*/
+/*  margin-bottom: 20px;*/
+/*}*/
 
-/* Style du formulaire de filtrage */
-.filter_form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  max-width: 400px;
-  margin: 0 auto 40px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+/*!* Style du formulaire de filtrage *!*/
+/*.filter_form {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  gap: 15px;*/
+/*  max-width: 400px;*/
+/*  margin: 0 auto 40px auto;*/
+/*  background-color: #fff;*/
+/*  padding: 20px;*/
+/*  border-radius: 8px;*/
+/*  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);*/
+/*}*/
 
-/* Titre du formulaire de filtrage */
-.filter_title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 10px;
-  text-align: center;
-}
+/*!* Titre du formulaire de filtrage *!*/
+/*.filter_title {*/
+/*  font-size: 20px;*/
+/*  font-weight: bold;*/
+/*  color: #333;*/
+/*  margin-bottom: 10px;*/
+/*  text-align: center;*/
+/*}*/
 
-/* Style des groupes de champs du formulaire */
-.filter_group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+/*!* Style des groupes de champs du formulaire *!*/
+/*.filter_group {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  gap: 8px;*/
+/*}*/
 
-/* Labels du formulaire */
-.filter_label {
-  font-size: 14px;
-  color: #555;
-}
+/*!* Labels du formulaire *!*/
+/*.filter_label {*/
+/*  font-size: 14px;*/
+/*  color: #555;*/
+/*}*/
 
-/* Champ input pour la date */
-.input_date_filter {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: #fff;
-  color: #333;
-  outline: none;
-  transition: border-color 0.3s ease;
-}
+/*!* Champ input pour la date *!*/
+/*.input_date_filter {*/
+/*  padding: 10px;*/
+/*  border: 1px solid #ccc;*/
+/*  border-radius: 4px;*/
+/*  font-size: 16px;*/
+/*  background-color: #fff;*/
+/*  color: #333;*/
+/*  outline: none;*/
+/*  transition: border-color 0.3s ease;*/
+/*}*/
 
-.input_date_filter:focus {
-  border-color: #4a90e2;
-}
+/*.input_date_filter:focus {*/
+/*  border-color: #4a90e2;*/
+/*}*/
 
-/* Selecteur de l'état */
-.select_filter {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: #fff;
-  color: #333;
-  outline: none;
-  transition: border-color 0.3s ease;
-}
+/*!* Selecteur de l'état *!*/
+/*.select_filter {*/
+/*  padding: 10px;*/
+/*  border: 1px solid #ccc;*/
+/*  border-radius: 4px;*/
+/*  font-size: 16px;*/
+/*  background-color: #fff;*/
+/*  color: #333;*/
+/*  outline: none;*/
+/*  transition: border-color 0.3s ease;*/
+/*}*/
 
-.select_filter:focus {
-  border-color: #4a90e2;
-}
+/*.select_filter:focus {*/
+/*  border-color: #4a90e2;*/
+/*}*/
 
-/* Bouton de recherche */
-.filter_button {
-  padding: 10px 15px;
-  background-color: #4a90e2;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
+/*!* Bouton de recherche *!*/
+/*.filter_button {*/
+/*  padding: 10px 15px;*/
+/*  background-color: #4a90e2;*/
+/*  color: #fff;*/
+/*  border: none;*/
+/*  border-radius: 4px;*/
+/*  font-size: 16px;*/
+/*  cursor: pointer;*/
+/*  text-align: center;*/
+/*  transition: background-color 0.3s ease;*/
+/*}*/
 
-.filter_button:hover {
-  background-color: #357ABD;
-}
+/*.filter_button:hover {*/
+/*  background-color: #357ABD;*/
+/*}*/
 
-/* Style de la table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 16px;
-  text-align: left;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+/*!* Style de la table *!*/
+/*table {*/
+/*  width: 100%;*/
+/*  border-collapse: collapse;*/
+/*  margin: 20px 0;*/
+/*  font-size: 16px;*/
+/*  text-align: left;*/
+/*  background-color: #fff;*/
+/*  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);*/
+/*}*/
 
-/* En-tête de la table */
-table th {
-  background-color: #4a90e2;
-  color: white;
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-}
+/*!* En-tête de la table *!*/
+/*table th {*/
+/*  background-color: #4a90e2;*/
+/*  color: white;*/
+/*  padding: 12px 15px;*/
+/*  border: 1px solid #ddd;*/
+/*}*/
 
-/* Corps de la table */
-table td {
-  padding: 12px 15px;
-  border: 1px solid #ddd;
-}
+/*!* Corps de la table *!*/
+/*table td {*/
+/*  padding: 12px 15px;*/
+/*  border: 1px solid #ddd;*/
+/*}*/
 
-/* Style pour les lignes de la table */
-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
+/*!* Style pour les lignes de la table *!*/
+/*table tr:nth-child(even) {*/
+/*  background-color: #f9f9f9;*/
+/*}*/
 
-table tr:hover {
-  background-color: #f1f1f1;
-}
+/*table tr:hover {*/
+/*  background-color: #f1f1f1;*/
+/*}*/
 
-/* Message lorsque aucune demande n'est trouvée */
-table td[colspan="14"] {
-  text-align: center;
-  font-size: 18px;
-  color: #555;
-  padding: 20px;
-}
+/*!* Message lorsque aucune demande n'est trouvée *!*/
+/*table td[colspan="14"] {*/
+/*  text-align: center;*/
+/*  font-size: 18px;*/
+/*  color: #555;*/
+/*  padding: 20px;*/
+/*}*/
+
+
+/*a {*/
+/*  display: inline-block;*/
+/*  margin-top: 20px;*/
+/*  padding: 10px 20px;*/
+/*  background-color: #3498db;*/
+/*  color: #fff;*/
+/*  text-decoration: none;*/
+/*  border-radius: 5px;*/
+/*  transition: background-color 0.3s ease;*/
+/*}*/

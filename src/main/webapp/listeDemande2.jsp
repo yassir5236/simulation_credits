@@ -114,7 +114,7 @@
     }
 %>
 <br>
-<a href="<%= request.getContextPath() %>/storeForm3.jsp">Retour à l'accueil</a>
+<a  class="retour"   href="<%= request.getContextPath() %>/storeForm3.jsp">Retour à l'accueil</a>
 <script src="<%= request.getContextPath()%>/js/scriptListeDemande.js"></script>
 </body>
 </html>

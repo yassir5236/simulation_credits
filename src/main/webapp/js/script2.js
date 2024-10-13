@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     afficherRecapitulatif();
+    afficheAlert();
 
     const block1 = document.getElementById('block1');
     const block2 = document.getElementById('block2');
@@ -159,17 +160,39 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
 
-    const flashMessage = document.querySelector(".flash-message");
+
+    function afficheAlert () {
+        const flashMessage = document.querySelector(".flash-message"),
+            closeIcon = document.querySelector(".close"),
+            progress = document.querySelector(".progress");
+
+        if (flashMessage) {
+            setTimeout(() => {
+                flashMessage.classList.add("active");
+                progress.classList.add("active");
+            }, 100);
+
+            let timer1 = setTimeout(() => {
+                flashMessage.classList.remove("active");
+            }, 5000);
+
+            let timer2 = setTimeout(() => {
+                progress.classList.remove("active");
+            }, 5300);
+
+            closeIcon.addEventListener("click", () => {
+                flashMessage.classList.remove("active");
+                clearTimeout(timer1);
+                clearTimeout(timer2);
+                setTimeout(() => {
+                    progress.classList.remove("active");
+                }, 300);
+            });
+        }
+    };
 
 
-    if (flashMessage) {
-        flashMessage.classList.add("show"); // Slide in from right to center
 
-        setTimeout(() => {
-            flashMessage.classList.remove("show");
-            flashMessage.classList.add("hide"); // Slide out from center to right
-        }, 4000);
-    }
 
 
 });

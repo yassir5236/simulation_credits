@@ -18,7 +18,6 @@ import java.util.List;
 
 @WebServlet("/detailDemande")
 public class DetailDemandeServlet extends HttpServlet {
-//    private final CreditDemandeService creditDemandeService = new CreditDemandeServiceImpl();
     @Inject
     private  CreditDemandeService creditDemandeService;
 

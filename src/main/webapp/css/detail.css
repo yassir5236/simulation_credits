@@ -1,4 +1,3 @@
-/* Style global pour la page */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
@@ -73,7 +72,6 @@ tr:hover {
     background-color: #f1f1f1;
 }
 
-/* Style responsive pour les petits écrans */
 @media (max-width: 768px) {
     body {
         padding: 10px;
@@ -92,3 +90,9 @@ tr:hover {
         padding: 8px 16px;
     }
 }
+
+
+
+
+
+

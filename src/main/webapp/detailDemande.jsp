@@ -42,7 +42,7 @@
     <tr>
         <td><%= etat.getEtat().getEtat() %>
         </td>
-        <td><%= etat.getDateModife().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")) %>
+        <td><%= etat.getDateModife() %>
         </td>
 
         <td><%= etat.getDescription() != null ? etat.getDescription() : "N/A" %>
@@ -62,7 +62,7 @@
 </table>
 
 <br>
-<a href="<%= request.getContextPath() %>/list">Retour à la liste</a>
+<a class="" href="<%= request.getContextPath() %>/list">Retour à la liste</a>
 </body>
 </html>
 
