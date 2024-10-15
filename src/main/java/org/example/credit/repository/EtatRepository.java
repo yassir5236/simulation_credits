@@ -13,7 +13,6 @@ import java.util.List;
 //}
 
 public interface EtatRepository extends GenericRepository<Etat , Long> {
-//    void save(Etat etat);
 
 }
 

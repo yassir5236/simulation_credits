@@ -22,7 +22,6 @@ public class CreditDemandeEtat {
     private Etat etat;
 
     @Column(nullable = false)
-//    private LocalDate dateModife;
     private LocalDate dateModife;
 
     @Column(nullable = false)

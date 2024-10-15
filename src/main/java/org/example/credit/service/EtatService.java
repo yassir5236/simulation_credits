@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface EtatService {
     void createEtat(Etat Etat);
+    List<Etat> getAllEtat();
 }
 
 

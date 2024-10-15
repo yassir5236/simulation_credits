@@ -17,6 +17,8 @@ import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import org.example.credit.model.CreditDemande;
+import org.example.credit.model.CreditDemandeEtat;
+import org.example.credit.model.Etat;
 import org.example.credit.service.CreditDemandeService;
 
 import java.io.IOException;
@@ -27,6 +29,7 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
+import org.example.credit.service.EtatService;
 
 
 @WebServlet("/submitForm")
@@ -38,6 +41,10 @@ public class SubmitFormServlet extends HttpServlet {
     @Inject
     private CreditDemande creditDemande;
 
+    @Inject
+    private EtatService etatService;
+
+
     // private final CreditDemandeService creditDemandeService = new CreditDemandeServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,7 +54,9 @@ public class SubmitFormServlet extends HttpServlet {
         String profession = (String) session.getAttribute("profession");
         Double montant = (Double) session.getAttribute("montant");
         int duree = (int) session.getAttribute("duree");
-        Double mensualiteFinal =  (Double) session.getAttribute("mensualite");
+        Double mensualiteFinal = (Double) session.getAttribute("mensualite");
+
+        String justif = "En_attend";
 
 
         String email = (String) session.getAttribute("email");
@@ -60,16 +69,7 @@ public class SubmitFormServlet extends HttpServlet {
         String dateNaissanceStr = request.getParameter("date_naissance");
         String revenusStr = request.getParameter("revenus");
 
-
-//        double montant = Double.parseDouble(montantStr);
-//        int duree = Integer.parseInt(dureeStr);
         double revenus = Double.parseDouble(revenusStr);
-//        double mensualiteFinal = Double.parseDouble(mensualiteFinalStr);
-
-
-
-
-
 
 
         LocalDate dateNaissance = LocalDate.parse(dateNaissanceStr, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -96,19 +96,23 @@ public class SubmitFormServlet extends HttpServlet {
         creditDemande.setMensualite(mensualiteFinal);
 
 
-        System.out.println("### Données prêtes pour l'insertion dans la base de données ###");
-        System.out.println("Montant : " + montant);
-        System.out.println("Durée : " + duree);
-        System.out.println("Nom : " + nom);
-        System.out.println("Prénom : " + prenom);
-        System.out.println("Email : " + email);
-        System.out.println("Téléphone : " + telephone);
-        System.out.println("Civilité : " + civilite);
-        System.out.println("CIN : " + cin);
-        System.out.println("Date de naissance : " + dateNaissance);
-        System.out.println("Revenus : " + revenus);
-        System.out.println("Profession : " + profession);
-        System.out.println("Mensualité final : " + mensualiteFinal);
+        Etat pendingEtat = new Etat();
+        pendingEtat.setEtat("En_attente");
+        etatService.createEtat(pendingEtat);
+
+
+        System.out.println(pendingEtat);
+
+
+        CreditDemandeEtat creditDemandeEtat = new CreditDemandeEtat();
+        creditDemandeEtat.setEtat(pendingEtat);
+        creditDemandeEtat.setDescription(justif);
+        creditDemandeEtat.setDateModife(LocalDate.now());
+        creditDemandeEtat.setCreditDemande(creditDemande);
+        creditDemande.getCreditDemandeEtats().add(creditDemandeEtat);
+
+        creditDemandeService.updateDemande(creditDemande);
+
 
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -121,9 +125,9 @@ public class SubmitFormServlet extends HttpServlet {
             request.getRequestDispatcher("/views/error.jsp").forward(request, response);
         } else {
             creditDemandeService.createDemande(creditDemande);
+
             response.sendRedirect(request.getContextPath() + "/list");
         }
-
 
 
     }
@@ -132,18 +136,21 @@ public class SubmitFormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<CreditDemande> demandes = creditDemandeService.getAllDemandes();
+
+        List<Etat> etats = etatService.getAllEtat();
+
+
         System.out.println("### doGet Method Called ###");
 
         if (demandes.isEmpty()) {
             req.setAttribute("message", "Aucune demande de crédit trouvée.");
         } else {
             req.setAttribute("demandes", demandes);
+            req.getSession().setAttribute("etats", etats);
         }
 
         req.getRequestDispatcher("listeDemande2.jsp").forward(req, resp);
     }
-
-
 
 
 }

@@ -22,15 +22,32 @@
         <input type="date" id="date_filter" name="date" class="input_date_filter">
     </div>
 
-    <div class="filter_group">
-        <label for="etat_filter" class="filter_label">État :</label>
-        <select name="etat" id="etat_filter" class="select_filter">
-            <option value="">Sélectionnez un état</option>
-            <option value="approuve">Approuvé</option>
-            <option value="rejete">Rejeté</option>
-            <option value="en_attente">En attente</option>
-        </select>
-    </div>
+
+
+        <div class="filter_group">
+            <label for="etat_filter" class="filter_label">État :</label>
+            <select name="etat" id="etat_filter" class="select_filter">
+                <option value="">Sélectionnez un état</option>
+                <option value="approuve">Approuvé</option>
+                <option value="rejete">Rejeté</option>
+                <option value="en_attente">En attente</option>
+
+                <%
+                    List<String> etats = (List<String>) request.getAttribute("etats");
+
+                    if (etats != null) {
+                        for (String etat : etats) {
+                %>
+                <option value="<%= etat %>"><%= etat %></option>
+                <%
+                        }
+                    }
+                %>
+
+
+
+            </select>
+        </div>
 
     <button type="submit" class="filter_button">Rechercher</button>
 </form>

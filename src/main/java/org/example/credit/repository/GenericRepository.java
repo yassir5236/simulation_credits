@@ -9,9 +9,8 @@ import java.util.Optional;
 public interface GenericRepository<T, ID  > {
     Optional<T> findById(ID id);
     List<T> findAll();
-    void save(T demande);
-    void update(T demande);
+    void save(T entity);
+    void update(T entity);
     void delete(ID id);
-//    List<T> rechercherDemandeCredit(LocalDate date, String etat) ;
 
 }

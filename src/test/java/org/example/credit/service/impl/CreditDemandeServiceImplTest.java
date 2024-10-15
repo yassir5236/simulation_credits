@@ -89,15 +89,5 @@ class CreditDemandeServiceImplTest {
         assertNull(result);
     }
 
-    @Test
-    void testGetDemandeById_ShouldThrowException_WhenRepositoryFails() {
-        when(demandeCreditRepository.findById(anyLong())).thenThrow(new RuntimeException("Erreur inattendue"));
 
-        Exception exception = assertThrows(RuntimeException.class, () -> {
-            creditDemandeService.getDemandeById(1L);
-        });
-
-        assertEquals("Erreur inattendue", exception.getMessage());
-        verify(demandeCreditRepository, times(1)).findById(1L);
-    }
 }

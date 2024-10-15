@@ -99,10 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-// Validation pour le CIN (max 12 caractères et alphanumérique)
     const validateCinInput = () => {
         const cinValue = cin.value.trim();
-        const cinPattern = /^[A-Z0-9]{1,12}$/;
+        const cinPattern = /^[A-Z]{1,3}\d+$/;
         if (cinPattern.test(cinValue)) {
             cin.style.color = '#02AFBC';
             cin.style.fontSize = "16px";
@@ -113,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-// Validation pour la date de naissance (doit avoir au moins 18 ans)
+
     const validateDateNaissanceInput = () => {
         const dateNaissanceValue = dateNaissance.value;
         if (isOlderThan18(dateNaissanceValue)) {
@@ -126,10 +125,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
-// Validation pour les revenus (ne doit pas dépasser 1 milliard)
+
     const validateRevenusInput = () => {
         const revenusValue = parseFloat(revenus.value.trim());
-        if (revenusValue > 1000 && revenusValue <= 1000000000) {
+        if (revenusValue > 10000 && revenusValue <= 1000000000) {
             revenus.style.color = '#02AFBC';
             revenus.style.fontSize = "16px";
             return true;

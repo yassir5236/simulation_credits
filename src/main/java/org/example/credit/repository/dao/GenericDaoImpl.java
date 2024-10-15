@@ -39,12 +39,12 @@ public abstract class GenericDaoImpl<T, ID> implements GenericRepository<T, ID> 
     }
 
     @Override
-    public void save(T demande) {
+    public void save(T entity) {
         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         try {
             transaction.begin();
-            em.persist(demande);
+            em.persist(entity);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();
@@ -54,14 +54,13 @@ public abstract class GenericDaoImpl<T, ID> implements GenericRepository<T, ID> 
     }
 
     @Override
-    public void update(T demande) {
+    public void update(T entity) {
         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-        em.clear();
         EntityTransaction transaction = em.getTransaction();
         try {
-            System.out.println(demande);
+            System.out.println(entity);
             transaction.begin();
-            em.merge(demande);
+            em.merge(entity);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();

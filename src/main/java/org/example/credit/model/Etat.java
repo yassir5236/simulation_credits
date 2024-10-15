@@ -82,7 +82,8 @@ public class Etat {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
+    @Column(unique=true, nullable=false)
     private String etat;
 
     @OneToMany(mappedBy = "etat", cascade = CascadeType.ALL)

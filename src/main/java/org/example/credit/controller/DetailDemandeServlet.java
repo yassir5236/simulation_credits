@@ -24,20 +24,11 @@ public class DetailDemandeServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String demandeIdString = request.getParameter("demandeId");
-        if (demandeIdString == null || demandeIdString.isEmpty()) {
-            request.setAttribute("error", "Identifiant de la demande manquant.");
-            request.getRequestDispatcher("/views/error.jsp").forward(request, response);
-            return;
-        }
 
         Long demandeId = Long.parseLong(demandeIdString);
         CreditDemande demande = creditDemandeService.getDemandeById(demandeId);
 
-        if (demande == null) {
-            request.setAttribute("error", "Demande introuvable.");
-            request.getRequestDispatcher("/views/error.jsp").forward(request, response);
-            return;
-        }
+
         List<CreditDemandeEtat> etats = new ArrayList<>(demande.getCreditDemandeEtats());
         etats.sort(Comparator.comparing(CreditDemandeEtat::getDateModife));
 

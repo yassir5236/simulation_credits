@@ -6,7 +6,9 @@ import jakarta.validation.constraints.*;
 
 import javax.management.Descriptor;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -86,14 +88,14 @@ public class CreditDemande {
     }
 
     @OneToMany(mappedBy = "creditDemande", cascade = CascadeType.ALL)
-    private Set<CreditDemandeEtat> creditDemandeEtats = new HashSet<>();
+    private List<CreditDemandeEtat> creditDemandeEtats = new ArrayList<>();
 
 
-    public Set<CreditDemandeEtat> getCreditDemandeEtats() {
+    public List<CreditDemandeEtat> getCreditDemandeEtats() {
         return creditDemandeEtats;
     }
 
-    public void setCreditDemandeEtats(Set<CreditDemandeEtat> creditDemandeEtats) {
+    public void setCreditDemandeEtats(List<CreditDemandeEtat> creditDemandeEtats) {
         this.creditDemandeEtats = creditDemandeEtats;
     }
 

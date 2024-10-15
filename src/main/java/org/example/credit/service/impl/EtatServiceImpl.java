@@ -32,6 +32,10 @@ public class EtatServiceImpl  implements EtatService {
         etatRepository.save(Etat);
     }
 
+    public List<Etat> getAllEtat() {
+        return etatRepository.findAll();
+    }
+
 }
 
 
